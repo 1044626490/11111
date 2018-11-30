@@ -1,0 +1,171 @@
+.level-card {
+  background: url("./img/levelBg.png") no-repeat center/101% 100%;
+  width: 100%;
+  height: 163px;
+  min-width: 1000px;
+  padding: 20px 0;
+}
+.progressDiv{
+    width: 208px;
+}
+.progressImg {
+  height: 110px;
+  cursor: pointer;
+  width: 110px;
+  line-height: 110px;
+  text-align: center;
+  position: relative;
+  opacity: 1;
+  > div {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transition-property: all;
+    transition-duration: 0.5s;
+    // animation-delay:2s;
+   
+  }
+  //顺时针旋转
+  @keyframes rotateClockwise {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(359deg);
+    }
+  }
+  //逆时针旋转
+  @keyframes rotateCounterclockwise {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(-359deg);
+    }
+  }
+  > div.human-level-inside {
+    background: url("./img/humanLevelInside.png") no-repeat center/65%;
+  }
+  > div.human-level-between {
+    animation: rotateClockwise 3s linear  infinite;
+    background: url("./img/humanLevelBetween.png") no-repeat center/80%;
+  }
+  > div.human-level-outside {
+    animation: rotateCounterclockwise 3s linear  infinite;
+    background: url("./img/humanLevelOutside.png") no-repeat center/100%;
+  }
+  > div.ground-level-inside {
+    background: url("./img/groundLevelInside.png") no-repeat center/65%;
+  }
+  > div.ground-level-between {
+    animation: rotateClockwise 3s linear  infinite;
+    background: url("./img/groundLevelBetween.png") no-repeat center/80%;
+  }
+  > div.ground-level-outside {
+    animation: rotateCounterclockwise 3s linear  infinite;
+    background: url("./img/groundLevelOutside.png") no-repeat center/100%;
+  }
+  > div.heaven-level-inside {
+    background: url("./img/heavenLevelInside.png") no-repeat center/65%;
+  }
+  > div.heaven-level-between {
+    animation: rotateClockwise 3s linear  infinite;
+
+    background: url("./img/heavenLevelBetween.png") no-repeat center/80%;
+  }
+  > div.heaven-level-outside {
+    animation: rotateCounterclockwise 3s linear  infinite;
+    background: url("./img/groundLevelOutside.png") no-repeat center/100%;
+  }
+  > div.clearance-level-inside {
+    background: url("./img/clearanceLevelInside.png") no-repeat center/65%;
+  }
+  > div.clearance-level-between {
+    animation: rotateClockwise 3s  linear infinite;
+    background: url("./img/clearanceLevelBetween.png") no-repeat center/80%;
+  }
+  > div.clearance-level-outside {
+    animation: rotateCounterclockwise 3s linear  infinite;
+    background: url("./img/clearanceLevelOutside.png") no-repeat center/101%;
+  }
+}
+.progressImg.disabled{
+    
+    cursor: not-allowed;
+    >div{
+        background: transparent;
+        animation: none;
+        opacity: 0.1;
+    }
+    div.human-level-outside {
+        background: url("./img/humanLevelNormal.png") no-repeat center/100%;
+    }
+    div.human-level-between {
+        background: url("./img/humanLevelNormal.png") no-repeat center/100%;
+    }
+    div.human-level-inside {
+        background: url("./img/humanLevelNormal.png") no-repeat center/100%;
+    }
+    div.ground-level-outside {
+        background: url("./img/groundLevelDisabeld.png") no-repeat center/100%;
+    }
+    div.ground-level-between {
+        background: url("./img/groundLevelDisabeld.png") no-repeat center/100%;
+    }
+    div.ground-level-inside {
+        background: url("./img/groundLevelDisabeld.png") no-repeat center/100%;
+    }
+    div.heaven-level-outside {
+        background: url("./img/heavenLevelDisabeld.png") no-repeat center/100%;
+    }
+    div.heaven-level-between {
+        background: url("./img/heavenLevelDisabeld.png") no-repeat center/100%;
+    }
+    div.heaven-level-inside {
+        background: url("./img/heavenLevelDisabeld.png") no-repeat center/100%;
+    }
+    div.clearance-level-outside {
+        background: url("./img/clearanceLevelDisabled.png") no-repeat center/104%;
+    }
+    div.clearance-level-between {
+        background: url("./img/clearanceLevelDisabled.png") no-repeat center/104%;
+    }
+    div.clearance-level-inside {
+        background: url("./img/clearanceLevelDisabled.png") no-repeat center/104%;
+    }
+}
+.progressImg.normal{
+    cursor: pointer;
+    >div{
+        // background: transparent;
+        animation-fill-mode: forwards;
+        animation: none;
+    }
+    /* div.human-level-outside {
+        background: url("./img/humanLevelNormal.png") no-repeat center/100%;
+    }
+    div.ground-level-outside {
+        background: url("./img/groundLevelNormal.png") no-repeat center/100%;
+    }
+    div.heaven-level-outside {
+        background: url("./img/heavenLevelNormal.png") no-repeat center/100%;
+    }
+    div.clearance-level-outside {
+        background: url("./img/clearanceLevelNormal.png") no-repeat center/104%;
+    } */
+}
+ .ant-progress-status-success .ant-progress-bg,.ant-progress-success-bg, .ant-progress-bg{
+    background: #00bf8f;
+
+    // box-shadow: 2px 2px red inset;
+}
+/* .disabled .ant-progress-status-success .ant-progress-bg,.disabled .ant-progress-success-bg, .ant-progress-bg{
+    background: #dcdcdc;
+} */
+.ant-progress-success-bg, .ant-progress-bg{
+    transition: 1.8s;
+}
+.ant-progress-inner{
+    background: #dcdcdc;
+    border-radius: 0;
+}

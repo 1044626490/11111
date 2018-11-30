@@ -1,0 +1,166 @@
+.recharge-wrap{
+  width: 100vw;
+  //padding: 10vw;
+  ul{
+    margin-top: 20px;
+    width: 100vw;
+    padding: 5vw;
+    list-style: none;
+    li{
+      width: 30vw;
+      padding: 3vw;
+      height: 35.46vw;
+      float: left;
+      .recharge-item{
+        padding-top: 4vw;
+        width: 24vw;
+        height: 29.46vw;
+        background-image: url("../../../layouts/activity/bg-recharge.png");
+        background-size: 100% 100%;
+        position: relative;
+        .recharge-value:first-child{
+          height: 7vw;
+          line-height: 7vw;
+        }
+        >span{
+          cursor: pointer;
+          background: linear-gradient(to bottom, #fcf2fa, #f4b36c);
+          //-webkit-background-clip: text;
+          //color: transparent;
+          border-radius: 2.5vw;
+          margin-left: 50%;
+          transform: translateX(-50%);
+          white-space: nowrap;
+          float: left;
+          display: inline-block;
+          text-align: center;
+          width: 15vw;
+          //padding: 0 4vw;
+          height: 4.5vw;
+          margin-top: 4vw;
+          letter-spacing:0.5px;
+          line-height: 4.5vw;
+          font-size: 2.8vw;
+          color: #f24a20;
+          background-color: #fef1e4;
+        }
+        .recharge-value{
+          font-weight: 600;
+          margin: 0;
+          text-align: center;
+          background: linear-gradient(to bottom, #fcf2fa, #f4b36c);
+          -webkit-background-clip: text;
+          //color: #f4b36c;
+          letter-spacing: -1px;
+          text-shadow:#fe4920 0 1.2px 0.2px,#fe4920 0 0 0,#fe4920 0 0 0,#fe4920 0 0 0;
+          font-size: 7vw;
+          position: relative;
+          .font-num{
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            font-weight: 600;
+            margin: 0;
+            text-align: center;
+            background: linear-gradient(to bottom, #fcf2fa, #f4b36c);
+            -webkit-background-clip: text;
+            color: transparent;
+            z-index: 99;
+            text-shadow: none;
+          }
+        }
+        .more{
+          font-weight: normal;
+          font-size: 3.5vw;
+          height: 5vw;
+          line-height: 5vw;
+          letter-spacing: 0!important;
+          .font-num{
+            font-weight: normal;
+            letter-spacing: 0!important;
+          }
+        }
+      }
+      .item1:before{
+        background-image: url("../../../layouts/activity/firstlit.png");
+      }
+      .item2:before{
+        background-image: url("../../../layouts/activity/timelit.png");
+      }
+      .item3:before{
+        background-image: url("../../../layouts/activity/first.png");
+      }
+      .recharge-item:before{
+        content: "";
+        display: inline-block;
+        width: 10vw;
+        height: 10vw;
+        position: absolute;
+        right: -4vw;
+        top: -4vw;
+        //background-image: url("../../../layouts/activity/timelit.png");
+        background-size: 100% 100%;
+      }
+    }
+  }
+  .change-pay{
+    position: fixed;
+    bottom: 20vw;
+    left: 0;
+    width: 100vw;
+    .ant-radio-group{
+      width: 100vw!important;
+      margin-top: 2vw;
+      padding: 2vw 6vw;
+      color: white;
+      background-color: rgba(0,0,0,0.2);
+      >span{
+        font-size: 4vw;
+      }
+      .ant-radio-wrapper{
+        width: 88vw;
+        height: 7vh;
+        line-height: 7vh;
+        //padding-left: 10vw;
+        .ant-radio{
+          //float: left;
+          margin-right: 2vw;
+        }
+        .pay-name{
+          padding-left: 8vw;
+          font-size: 4vw;
+          display: inline-block;
+          width: 90%;
+          color: white;
+          position: relative;
+        }
+        .pay-name:before{
+          content: "";
+          display: inline-block;
+          width: 6vw;
+          height: 6vw;
+          border-radius: 3vw;
+          background-size: 100% 100%;
+          position: absolute;
+          left: 0;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+        .pay1:before{
+          background-image: url("../../../layouts/image/pay/yl.png");
+        }
+        .pay2:before{
+          background-image: url("../../../layouts/image/pay/zfb.png");
+        }
+        .pay3:before{
+          background-image: url("../../../layouts/image/pay/wx.png");
+        }
+        .border-pay{
+          border-bottom: 1px dashed #7a7a7a;
+          //border-top: 1px dashed #7a7a7a;
+        }
+      }
+    }
+  }
+}

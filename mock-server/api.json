@@ -1,0 +1,20 @@
+{
+  "Login": [{
+    "url": "/login",
+    "desc": "用户登入",
+    "mock": true,
+    "res": {
+      "code":"0000",
+      "msg":"登陆成功",
+      "data":{
+        "uid":1,
+        "username":"@cword(2,6)",
+        "tel":"18408219941",
+        "avatar":"https://avatar.csdn.net/2/2/8/3_csdn3436.jpg",
+        "diamond|":[0,50,111],
+        "gold|1":[2,55,612],
+        "integral|1":[11,25,39,100,233]
+      }
+    }
+  }]
+}

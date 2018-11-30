@@ -1,0 +1,291 @@
+.invite-wrap{
+  height: 80vh!important;
+  width: 92.26vw!important;
+  box-shadow: 0 0 5px 1px #826da8 inset;
+  //overflow: visible!important;
+  .ant-modal-content{
+    box-shadow: 0 0 5px 3px #634bb5 inset;
+  }
+  .add-friend-item{
+    .ant-col-15{
+      height: 12vw;
+      line-height: 12vw;
+      div{
+        height: 12vw;
+        line-height: 12vw;
+        .ant-row{
+          .ant-col-6,.ant-col-18{
+            height: 12vw;
+            line-height: 12vw;
+          }
+        }
+      }
+    }
+  }
+  .player-info {
+    margin: 8vh auto 2.81vh!important;
+    height: 70vh !important;
+    width: 84.26vw!important;
+    padding: 4vw;
+    .anticon-close-circle {
+      position: absolute;
+      bottom: -8vh;
+      left: 50%;
+      transform: translate(-50%);
+      color: white;
+      font-size: 6vw;
+    }
+  }
+  .add-friend-container{
+    height: 66vh;
+    overflow-y: auto;
+    position: relative;
+    overflow-x: hidden;
+    .add-friend-item{
+      padding: 1vw 0;
+    }
+    .invite-friend-item{
+      .ant-avatar{
+        height: 8vw!important;
+        width: 8vw!important;
+        border-radius: 5vw!important;
+        border-width: 0!important;
+        img{
+          margin: 1vw!important;
+          width: 6vw!important;
+          height: 6vw!important;
+        }
+      }
+      .ant-row-flex{
+        height: 13.33vw;
+        line-height: 13.33vw;
+        .ant-col-4{
+          text-align: center;
+        }
+        .ant-col-14{
+          font-size: 4vw;
+          color: white;
+        }
+        .ant-col-6{
+          button{
+            padding: 0;
+            font-size: 3.5vw;
+            color: white;
+            background-color: #4fbf16;
+            border-width: 0;
+            border-radius: 1vw;
+            height: 6vw;
+            width: 18vw;
+          }
+        }
+      }
+    }
+    .invite-friend-item:first-child{
+      .ant-avatar{
+        background-color: #0db80d;
+      }
+    }
+    .invite-friend-item:nth-child(2){
+      .ant-avatar{
+        background-color: #018fee;
+      }
+    }
+    .invite-friend-item:last-child{
+      .ant-avatar{
+        background-color: #f86200;
+      }
+    }
+    .no-checked{
+      background: -webkit-linear-gradient(top,#614fae 0,#5d4baa 100%)!important;
+      background: -moz-linear-gradient(top,#614fae 0,#5d4baa 100%)!important;
+      background: -o-linear-gradient(top,#614fae 0,#5d4baa 100%)!important;
+      background: linear-gradient(to bottom,#614fae 0,#5d4baa 100%)!important;
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#614fae,endColorstr=#5d4baa,GradientType=0)!important;
+    }
+    .add-friend-item,.invite-friend-item{
+      height: 13.33vw;
+      margin-bottom: 1vw;
+      border-radius: 1vw;
+      background: -webkit-linear-gradient(top,#7664c2 0,#6653b4 100%);
+      background: -moz-linear-gradient(top,#7664c2 0,#6653b4 100%);
+      background: -o-linear-gradient(top,#7664c2 0,#6653b4 100%);
+      background: linear-gradient(to bottom,#7664c2 0,#6653b4 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#7664c2,endColorstr=#6653b4,GradientType=0);
+      .ant-col-6,.ant-col-18{
+        height: 5vw;
+        line-height: 5vw;
+        vertical-align: center;
+        position: relative;
+      }
+      .level-card{
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        display: inline-block;
+        text-align: center;
+        width: 10vw;
+        height: 3vw;
+        line-height: 3vw;
+        font-size: 2vw;
+        background-color: #f6f62f;
+        color: #6d4c9d;
+        border-radius: 1vw;
+        //margin-right: 2vw;
+      }
+      .add-friend-name{
+        vertical-align: text-top;
+        font-size: 3vw;
+        display: inline-block;
+        height: 5vw;
+        line-height: 5vw;
+        color: #f6f62f;
+      }
+      .ant-avatar{
+        margin-left: 3vw;
+        border: 1px solid white;
+        border-radius: 2vw;
+        width: 10.9vw;
+        height: 10.9vw;
+        svg{
+          font-size: 10vw;
+        }
+      }
+      .anticon-star{
+        margin-top: 1vw;
+        font-size: 4vw;
+        color: #f6f62f;
+        margin-right: 2vw;
+      }
+      .ranking{
+        display: inline-block;
+        color: #a59bd3;
+        font-size: 3vw;
+        margin-top: -10vw;
+      }
+      .ant-checkbox-wrapper{
+        float: right;
+        margin-right: 6vw;
+        margin-top: 20%;
+        .ant-checkbox{
+          width: 5vw;
+          height: 5vw;
+          border-radius: 50%;
+          .ant-checkbox-input{
+            width: 5vw;
+            height: 5vw;
+            border-radius: 50%;
+          }
+          .ant-checkbox-inner{
+            width: 5vw;
+            height: 5vw;
+            border-radius: 50%;
+          }
+        }
+        .ant-checkbox-checked{
+          .ant-checkbox-inner{
+            background-color: #4abd12;
+            position: relative;
+            border: 1px solid #4abd12;
+          }
+        }
+        .ant-checkbox-inner:after{
+          top: 15%;
+          left: 35%;
+          position: absolute;
+          width: 2vw;
+          height: 3vw;
+        }
+      }
+    }
+    .operation-button{
+      width: 100vw;
+      text-align: center;
+      position: absolute;
+      bottom: 4vh;
+      left: 50%;
+      transform: translateX(-50%);
+      height: 10vw;
+      line-height: 10vw;
+      .no-friend{
+        text-align: center;
+      }
+      button{
+        padding: 0!important;
+        width: 20vw;
+        height: 8vw;
+        font-size: 3vw;
+        background-color: #4abd12;
+        color: #fff;
+        border-radius: 1vw;
+        border-width: 0;
+        margin-right: 5vw;
+      }
+      .ant-checkbox-wrapper{
+        position: absolute;
+        top: 50%;
+        right: 18vw;
+        transform: translateY(-50%);
+      }
+    }
+  }
+  .check-all{
+    margin-top: -2%;
+    button{
+      font-size: 3vw;
+      width: 20vw;
+      height: 8vw;
+      padding: 0;
+    }
+    .ant-checkbox-wrapper{
+      margin-top: -1%;
+    }
+  }
+  .ant-checkbox{
+    width: 5vw;
+    height: 5vw;
+    border-radius: 50%;
+    .ant-checkbox-input{
+      width: 5vw;
+      height: 5vw;
+      border-radius: 50%;
+    }
+    .ant-checkbox-inner{
+      width: 5vw;
+      height: 5vw;
+      border-radius: 50%;
+    }
+  }
+  .ant-checkbox-checked{
+    .ant-checkbox-inner{
+      background-color: #4abd12;
+      position: relative;
+      border: 1px solid #4abd12;
+    }
+  }
+  .ant-checkbox-inner:after{
+    top: 15%;
+    left: 35%;
+    position: absolute;
+    width: 2vw;
+    height: 3vw;
+  }
+  .rank-info{
+    .rank-my-info{
+      margin-top: 65vh;
+      //position: fixed;
+      //bottom: 5vh;
+      //left: 50%;
+      //transform: translateX(-50%);
+      text-align: center;
+      .info-name{
+        font-size: 5vw;
+        margin-bottom: 1vw;
+        color: white;
+      }
+      p{
+        color: white;
+      }
+    }
+  }
+}

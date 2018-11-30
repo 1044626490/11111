@@ -1,0 +1,163 @@
+.my-friend-info{
+  overflow-y: auto;
+  height: 100%;
+  .myRank{
+    background: -webkit-linear-gradient(top, #6497c2 0, #5387b4 100%)!important;
+    background: -moz-linear-gradient(top,#6497c2 0,#5387b4 100%)!important;
+    background: -o-linear-gradient(top,#6497c2 0,#5387b4 100%)!important;
+    background: linear-gradient(to bottom,#6497c2 0,#5387b4 100%)!important;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#6497c2,endColorstr=#5387b4,GradientType=0)!important;
+    .ranking{
+      color: #b7b6d3!important;
+    }
+  }
+  .my-friend-info-item{
+    padding: 1vw 4vw;
+    height: 15vw;
+    margin-bottom: 1vw;
+    border-radius: 1vw;
+    background: -webkit-linear-gradient(top,#7664c2 0,#6653b4 100%);
+    background: -moz-linear-gradient(top,#7664c2 0,#6653b4 100%);
+    background: -o-linear-gradient(top,#7664c2 0,#6653b4 100%);
+    background: linear-gradient(to bottom,#7664c2 0,#6653b4 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#7664c2,endColorstr=#6653b4,GradientType=0);
+    .ant-col-7,.ant-col-17{
+      height: 5vw;
+      position: relative;
+    }
+    .level-card{
+      position: absolute;
+      left: 20%;
+      top: 50%;
+      -webkit-transform: translate(-50%,-50%);
+      -moz-transform: translate(-50%,-50%);
+      -ms-transform: translate(-50%,-50%);
+      -o-transform: translate(-50%,-50%);
+      transform: translateY(-50%,-50%);
+      border-radius: 1vw;
+      >span:first-child{
+        font-size: 2vw;
+        color: #6d4c9d;
+        text-align: center;
+        display: inline-block;
+        width: 10vw;
+        position: absolute;
+        white-space: nowrap;
+        left: 50%;
+        top: 50%;
+        z-index: 11;
+        -webkit-transform: translate(-50%,-50%);
+        -moz-transform: translate(-50%,-50%);
+        -ms-transform: translate(-50%,-50%);
+        -o-transform: translate(-50%,-50%);
+        transform: translateY(-50%,-50%);
+      }
+      >span:last-child{
+        display: inline-block;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        z-index: 10;
+        -webkit-transform: translate(-50%,-50%);
+        -moz-transform: translate(-50%,-50%);
+        -ms-transform: translate(-50%,-50%);
+        -o-transform: translate(-50%,-50%);
+        transform: translateY(-50%,-50%);
+        width: 10vw;
+        height: 3vw;
+        background-color: #f6f62f;
+        border-radius: 1vw;
+      }
+    }
+    .add-friend-name{
+      vertical-align: text-top;
+      font-size: 3vw;
+      display: inline-block;
+      height: 5vw;
+      //line-height: 5vw;
+      color: #f6f62f;
+    }
+    .ant-avatar{
+      margin-top: 1vw;
+      width: 10.9vw;
+      height: 10.9vw;
+      svg{
+        font-size: 10vw;
+      }
+    }
+    .anticon-star{
+      margin-top: 1vw;
+      font-size: 4vw;
+      color: #f6f62f;
+      margin-right: 2vw;
+    }
+    .ant-col-24{
+      white-space: nowrap;
+    }
+    .ranking{
+      display: inline-block;
+      color: #a59bd3;
+      font-size: 3vw;
+      margin-top: -10vw;
+    }
+    .ant-checkbox-wrapper{
+      float: right;
+      margin-top: 20%;
+      .ant-checkbox{
+        width: 6vw;
+        height: 6vw;
+        border-radius: 50%;
+        .ant-checkbox-input{
+          width: 6vw;
+          height: 6vw;
+          border-radius: 50%;
+        }
+        .ant-checkbox-inner{
+          width: 6vw;
+          height: 6vw;
+          border-radius: 50%;
+        }
+      }
+      .ant-checkbox-checked{
+        .ant-checkbox-inner{
+          background-color: #4abd12;
+          position: relative;
+          border: 1px solid #4abd12;
+        }
+      }
+      .ant-checkbox-inner:after{
+        top: 15%;
+        left: 35%;
+        position: absolute;
+        width: 2vw;
+        height: 3vw;
+      }
+    }
+    .rank-first,.rank-second,.rank-third,.rank{
+      display: inline-block;
+      margin-top: 30%;
+      float: left;
+      width: 6vw;
+      height: 6vw;
+      background-size: 100% 100%;
+    }
+    .rank-first{
+      background-image: url("../../../layouts/image/rank_01.png");
+    }
+    .rank-second{
+      background-image: url("../../../layouts/image/rank_02.png");
+    }
+    .rank-third{
+      background-image: url("../../../layouts/image/rank_03.png");
+    }
+    .rank{
+      //font-family: "Source Code Variable";
+      border-radius: 3vw;
+      //border: 1px solid #fff;
+      background-color: #aa9fe4;
+      line-height: 6vw;
+      text-align: center;
+      color: white;
+    }
+  }
+}

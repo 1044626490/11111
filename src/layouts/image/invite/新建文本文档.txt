@@ -1,0 +1,47 @@
+    .ant-avatar{
+      height: 8vw;
+      width: 8vw;
+      border-radius: 5vw;
+      img{
+        margin: 1vw;
+        width: 6vw;
+        height: 6vw;
+      }
+    }
+    .invite-friend-item:first-child{
+      .ant-avatar{
+        background-color: #0db80d;
+      }
+    }
+    .invite-friend-item:nth-child(2){
+      .ant-avatar{
+        background-color: #018fee;
+      }
+    }
+    .invite-friend-item:last-child{
+      .ant-avatar{
+        background-color: #f86200;
+      }
+    }
+    .invite-friend-item{
+      .ant-row-flex{
+        height: 13.33vw;
+        line-height: 13.33vw;
+        .ant-col-4{
+          text-align: center;
+        }
+        .ant-col-14{
+          color: white;
+        }
+        .ant-col-6{
+          button{
+            color: white;
+            background-color: #4fbf16;
+            border-width: 0;
+            border-radius: 1vw;
+            height: 6vw;
+            width: 18vw;
+          }
+        }
+      }
+    }

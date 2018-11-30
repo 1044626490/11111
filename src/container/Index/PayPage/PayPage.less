@@ -1,0 +1,153 @@
+.pay-wrap{
+  background-color: #3e3571;
+  width: 100vw;
+  height: 100vh;
+  .button-operation{
+    width: 100%;
+    text-align: center;
+    button{
+      margin-top: 5vw;
+      width: 30vw;
+      height: 8vw;
+      background-color: #4abd12;
+      color: white;
+      padding: 0;
+      border-radius: 1.5vw;
+      border-width: 0;
+      line-height: 8vw;
+    }
+    .disable{
+      background-color: #368a0d;
+      color: #a2a2a2;
+    }
+  }
+  .pay-container{
+    position: fixed;
+    top: 0;
+    z-index: 1;
+    .ant-radio-inner{
+      background-color: transparent;
+    }
+    .ant-radio-checked{
+      .ant-radio-inner{
+        border-width: 0;
+      }
+      .ant-radio-inner:after{
+        background-image: url("../../../layouts/image/ok.png");
+        background-size: 100% 100%;
+        position: absolute;
+        left: -10%;
+        top: -10%;
+        border-radius: 60%;
+        width: 120%;
+        height: 120%;
+      }
+    }
+    .pay-price{
+      width: 100vw;
+      padding: 14vw 6vw 4vw;
+      color: white;
+      background-color: rgba(0,0,0,0.2);
+      p{
+        font-size: 4vw;
+      }
+      span{
+        font-size: 5vw;
+        .ant-select{
+          font-size: 5vw;
+          color: white;
+          width: 80%;
+          border-width: 0;
+          background-color: transparent;
+          display: inline-block;
+        }
+        .ant-select-selection{
+          background-color: transparent;
+          border: none;
+          width: 80%;
+          display: inline-block;
+        }
+        .anticon-down{
+          display: none;
+        }
+        .ant-input-number{
+          font-size: 5vw;
+          color: white;
+          width: 90%;
+          border-width: 0;
+          //padding-left: 2vw;
+          background-color: transparent;
+        }
+        .ant-input-number-handler-wrap{
+          display: none;
+        }
+        .ant-input-number:focus{
+          border: none!important;
+        }
+      }
+
+    }
+    .ant-radio-group{
+      width: 100vw!important;
+      margin-top: 2vw;
+      padding: 2vw 6vw;
+      color: white;
+      background-color: rgba(0,0,0,0.2);
+      >span{
+        font-size: 4vw;
+      }
+      .ant-radio-wrapper{
+        width: 88vw;
+        height: 7vh;
+        line-height: 7vh;
+        //padding-left: 10vw;
+        .ant-radio{
+          //float: left;
+          margin-right: 2vw;
+        }
+        .pay-name{
+          padding-left: 8vw;
+          font-size: 4vw;
+          display: inline-block;
+          width: 90%;
+          color: white;
+          position: relative;
+        }
+        .pay-name:before{
+          content: "";
+          display: inline-block;
+          width: 6vw;
+          height: 6vw;
+          border-radius: 3vw;
+          background-size: 100% 100%;
+          position: absolute;
+          left: 0;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+        .pay1:before{
+          background-image: url("../../../layouts/image/pay/yl.png");
+        }
+        .pay2:before{
+          background-image: url("../../../layouts/image/pay/zfb.png");
+        }
+        .pay3:before{
+          background-image: url("../../../layouts/image/pay/wx.png");
+        }
+        .pay4:before{
+          background-image: url("../../../layouts/image/gold.png");
+        }
+        .pay-name{
+          border-bottom: 1px dashed #7a7a7a;
+        }
+        .pay-name:last-child{
+          border: none!important;
+        }
+        //.border-pay{
+        //  border-bottom: 1px dashed #7a7a7a;
+        //  //border-top: 1px dashed #7a7a7a;
+        //}
+      }
+    }
+  }
+}

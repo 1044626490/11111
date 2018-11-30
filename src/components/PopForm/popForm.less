@@ -1,0 +1,43 @@
+//控制Modal垂直居中
+.vertical-center-modal {
+  text-align: center;
+  white-space: nowrap;
+
+  //Modal弹出框
+  .ant-modal {
+    //width: 800px !important;
+    display: inline-block;
+    vertical-align: middle;
+    top: 0;
+    text-align: left;
+
+    //标题居中
+    .ant-modal-title{
+      text-align: center;
+    }
+
+    //modal内容
+    .ant-modal-body{
+      padding: 24px 0;
+      .myForm-content {
+        max-height: 660px;
+        overflow-y: auto;
+      }
+    }
+    .feedback-reply-editor{
+      .ant-form-item-children-icon{
+        left: 500px;
+      }
+    }
+      .bf-content{
+          height: 300px;
+      }
+  }
+}
+.vertical-center-modal:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  width: 0;
+}

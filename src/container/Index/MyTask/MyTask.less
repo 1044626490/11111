@@ -1,0 +1,200 @@
+.my-task-container{
+  width: 92.53vw!important;
+  height: 70vh!important;
+  position: fixed;
+  top: 50%!important;
+  left: 50%!important;
+  overflow: visible;
+  .ant-modal {
+    .ant-modal-content {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      .ant-modal-body {
+        height: 100% !important;
+        .close-modal {
+          background-image: url("../../../layouts/image/checkHome/close1.png");
+          z-index: 10000;
+        }
+          .task-tabs {
+            text-align: center;
+            padding-top: 5%;
+            height: 95%;
+            .ant-tabs-ink-bar{
+              display: none!important;
+            }
+            .ant-tabs-tab:first-child{
+              margin-right: 8vw;
+            }
+            .ant-tabs-tab {
+              border-top-left-radius: 3vw;
+              border-top-right-radius: 3vw;
+              padding: 1vw 3vw 3vw;
+              font-size: 4vw;
+              line-height: 6vw;
+              color: #d2c9fd;
+              height: 9vw;
+              text-align: center;
+              background-color: #4c3b94;
+              writing-mode: lr-tb;
+              white-space: normal;
+              word-break: break-all;
+              word-wrap: break-word;
+              font-weight: 600;
+            }
+            .ant-tabs-tabpane{
+              height: 48vh;
+              width: 90%;
+              position: absolute;
+              left: 5%;
+              top: 5%;
+              overflow-y: auto;
+            }
+            .ant-tabs-tabpane:nth-child(2){
+              .ant-row{
+                height: 15vw!important;
+                line-height: 15vw!important;
+              }
+              .ant-col-6,.ant-col-12{
+                height: 15vw;
+                line-height: 15vw;
+                margin: 0;
+              }
+              //.ant-col-12{
+              //  margin: 0;
+              //  .ant-row{
+              //    height: 13vw;
+              //    line-height: 13vw;
+              //  }
+              //}
+            }
+            .ant-tabs-tab-active {
+              background-color: #ddd9f5;
+              color: #f9f537;
+              letter-spacing: 1px;
+              text-shadow: #7062b8 1px 0 0,#7062b8 0 1px 0,#7062b8 -1px 0 0,#7062b8 0 -1px 0;
+            }
+            .ant-tabs-bar {
+              border-width: 0;
+              margin-bottom: 0;
+              .ant-tabs-nav-container {
+                margin-right: 0px;
+              }
+            }
+            .ant-tabs-nav {
+              margin-top: 5vh;
+            }
+            .ant-tabs-content {
+              background-color: #8e7be1;
+              height: 82%;
+              width: 90%;
+              margin: 0 auto!important;
+              border-radius: 3vw;
+              position: relative;
+              z-index: 9999;
+              padding: 6vw;
+              transition-duration: 0.5s;
+              box-shadow: 0 0 5px 2px #6a61a3 inset;
+              border-width: 0;
+              .has-got{
+                color: white;
+                font-size: 3vw;
+                text-align: left;
+                margin-bottom: 2vw;
+              }
+            }
+        }
+        .my-task-info-item {
+          padding: 0 2vw 0 0;
+          height: 15vw;
+          margin-bottom: 2vw;
+          border-radius: 1vw;
+          background: -webkit-linear-gradient(top, #7664c2 0, #6653b4 100%);
+          background: -moz-linear-gradient(top, #7664c2 0, #6653b4 100%);
+          background: -o-linear-gradient(top, #7664c2 0, #6653b4 100%);
+          background: linear-gradient(to bottom, #7664c2 0, #6653b4 100%);
+          filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#7664c2, endColorstr=#6653b4, GradientType=0);
+          .special-pic{
+            height: 10.3vw!important;
+            width: 12vw!important;
+          }
+          .ant-row-flex{
+            height: 13vw;
+            .ant-col-6{
+              height: 15vw;
+              line-height: 15vw;
+            }
+            .ant-col-6:last-child{
+              text-align: right;
+              button{
+                width: 15vw;
+                height: 6vw;
+                border-radius: 1vw;
+                border-width: 0;
+                box-shadow: 0 0 3px 1px #636363;
+                background-image: url("../../../layouts/image/modal-btn-3.png");
+                background-size: 100% 100%;
+                color: white;
+                font-size: 3vw;
+                text-shadow: #54874f 1px 0 0, #54874f 0 1px 0, #54874f 0 -1px 0, #54874f -1px 0 0;
+                padding: 0;
+              }
+              .disabled-button{
+                background-image: url("../../../layouts/image/start_no.png");
+                text-shadow: #6c6c6c 1px 0 0, #6c6c6c 0 1px 0, #6c6c6c 0 -1px 0, #6c6c6c -1px 0 0;
+              }
+            }
+            .ant-col-12{
+              margin-top: 2vw;
+              height: 9vw;
+              line-height: 9vw;
+              text-align: left;
+              font-size: 3vw;
+              color: white;
+              .ant-row{
+                height: 4.5vw;
+                line-height: 4.5vw;
+              }
+              .ant-progress{
+                width: 70%;
+                .ant-progress-outer{
+                  height: 100%;
+                  margin: 0;
+                  padding-right: 2vw;
+                  .ant-progress-inner{
+                    height: 1.5vw;
+                    .ant-progress-success-bg{
+                      height: 1.5vw!important;
+                    }
+                  }
+                }
+              }
+              .progress-value{
+                font-size: 2vw;
+              }
+              .ant-progress-text{
+                display: none;
+              }
+            }
+          }
+          .ant-avatar{
+            border-radius: 2vw;
+            width: 12vw;
+            height: 12vw;
+          }
+        }
+      }
+      .ant-modal-body:before{
+        content: "";
+        display: inline-block;
+        background-image: url("../../../layouts/image/task_header.png");
+        position: absolute;
+        top: -6vw;
+        left: 10%;
+        width: 80%;
+        height: 18vw;
+        background-size: 100% 100%;
+      }
+    }
+  }
+}

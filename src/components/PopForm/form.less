@@ -1,0 +1,134 @@
+#components-form-demo-validate-other .dropbox {
+  height: 180px;
+  line-height: 1.5;
+}
+
+//form
+.ant-form{
+  .ant-form-item{
+    .ant-form-item-control-wrapper{
+      .ant-form-item-control{
+        input[type="text"],
+        input[type="password"],
+        .ant-select,textarea,
+        .ant-input-number,
+        .ant-calendar-picker{
+          min-width: 130px;
+        }
+
+        //验证码框
+        .verify{
+          button{
+            height: 30px;
+            font-size: 14px;
+            color: #40a9ff!important;
+            background-color: #fff!important;
+            border-left: 1px solid rgb(217, 217, 217);
+            margin-right: 1px;
+          }
+          button.disabled,
+          button:hover{
+            color: #fff!important;
+            background-color: #40a9ff!important;
+            border-color: #40a9ff;
+          }
+        }
+      }
+    }
+  }
+}
+
+//inline form
+.ant-form-inline{
+  .ant-form-item{
+    margin-bottom: 20px;
+  }
+}
+
+//选择行
+.rowNum{
+  margin-bottom: 0!important;
+  .ant-form-item-label{
+    vertical-align: top !important;
+  }
+}
+
+//定制通知类型：气泡框
+.ant-popover{
+  .ant-popover-inner-content{
+    //padding: 0;
+    .ant-popover-message{
+      padding: 0;
+      //隐藏图标
+      i{
+        display: none;
+      }
+      .ant-popover-message-title{
+        padding: 0;
+
+        //checkbox
+        .ant-checkbox-group-item{
+          display: block;
+          margin-bottom: 5px;
+        }
+        //person
+        .person-choose{
+          width: 480px;
+          display: flex;
+          >li{
+            >div{
+              white-space: nowrap;
+              margin-bottom: 20px;
+              >.query-person-name{
+                width: 150px;
+              }
+            }
+          }
+          >li:first-child{
+            width: 240px;
+            border-right: 1px solid #ddd;
+          }
+          >li:last-child{
+            width: 240px;
+            padding-left: 10px;
+          }
+          .person-tag{
+            margin-top: 10px;
+            height: 200px;
+            overflow-y: auto;
+            >li{
+              display: inline-block;
+              min-width: 100px;
+              height: 24px;
+              line-height: 24px;
+              text-align: center;
+              border: 1px solid #d9d9d9;
+              border-radius: 4px;
+              margin: 5px 10px 5px 0;
+              cursor: pointer;
+              >i{
+                font-size: 20px;
+                color: #00bd8d;
+                margin-left: 10px;
+              }
+            }
+          }
+          .no-choose{
+            width: 100%;
+            >li{
+              min-width: 100px;
+              margin-right: 10px;
+            }
+          }
+        }
+      }
+
+    }
+    //隐藏按钮
+    .ant-popover-buttons{
+      display: none ;
+    }
+  }
+}
+
+

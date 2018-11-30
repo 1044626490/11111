@@ -1,0 +1,221 @@
+.my-info-container{
+  width: 100vw;
+  height: 100vh;
+  background-color: #3d3470;
+  .my-info-wrap{
+    .header-pic{
+      background-color: #241f42;
+      padding: 4vw 4vw 1vw;
+      .top-header{
+        height: 14.5vh;
+        border-bottom: 1px dashed rgba(168,168,168,0.2);
+        padding: 2.25vh 0;
+        .ant-avatar{
+          float: left;
+          width: 9vh!important;
+          height: 9vh!important;
+          border:1px solid #fff!important;
+          margin-right: 1.5vh;
+        }
+        .name-class{
+          height: 9vh;
+          padding-top: 1.5vh;
+          .anticon-edit{
+            float: right;
+            margin-top: 0.6vh;
+            display: inline-block;
+          }
+          p,.my-level{
+            font-size: 2vh;
+            margin: 0;
+            color: white;
+            input{
+              width: 40vw;
+              height: 3vh;
+              margin-right: 10px;
+              //background-color: ;
+              border-radius: 5px;
+            }
+            .class-rank{
+              float: left;
+            }
+            .my-name{
+              color: #decc35;
+              letter-spacing: 1px;
+            }
+            .my-vip{
+              img{
+                width: 5vw;
+                height: 4.21vw;
+                position: relative;
+                left: 1.5vw;
+                top: -0.5vw;
+              }
+            }
+            .ant-progress{
+              width: 32vw;
+              .ant-progress-inner{
+                width: 32vw;
+                background-color: #4f468f;
+              }
+            }
+          }
+        }
+      }
+      .bottom-header{
+        width: 91.7vw;
+        height: 13.5vh;
+        padding: 2.25vh 0;
+        .bottom-header-list{
+          list-style: none;
+          padding-left: 0;
+          li{
+            height: 9vh;
+            text-align: center;
+            float: left;
+            width: 30vw;
+            border-right: 1px dashed rgba(168,168,168,0.2);
+            p,div{
+              margin: 0 0 5px 0;
+              color: white;
+              font-size: 3vh;
+              .ant-badge{
+                font-size: 3vh;
+                color: white;
+                position: relative;
+                .ant-scroll-number{
+                  font-size: 3vw!important;
+                  width: 5vw;
+                  height: 5vw;
+                  min-height: 5vw;
+                  min-width: 5vw;
+                  border-radius: 2.5vw;
+                  position: absolute;
+                  top: -2vw;
+                  left: 3vw;
+                  span{
+                    line-height: 5vw;
+                  }
+                  span:first-child{
+                    margin-left: -1.25vw;
+                  }
+                  border: none;
+                  box-shadow: none;
+                  right: -1vh;
+                  .current{
+                    font-size: 3vw!important;
+                  }
+                  p{
+                    margin: 0;
+                    font-size: 1vh!important;
+                  }
+                }
+              }
+            }
+            span{
+              color: #ccc;
+            }
+          }
+          li:last-child{
+            border-right-width: 0;
+          }
+        }
+      }
+    }
+    .my-info-operation{
+      margin-top: 3vw;
+      padding: 2vh 4vw;
+      .operation-list{
+        width: 100%;
+        height: 30vh;
+        ul{
+          padding: 0;
+          list-style: none;
+          border-radius: 10px;
+          background-color: #312a59;
+          li{
+            height: 7.5vh;
+            line-height: 7.5vh;
+            border-bottom: 1px dashed rgba(168,168,168,0.2);
+            p{
+              font-size: 4vw;
+              color: #ccc;
+              padding-left: 15%;
+              margin: 0;
+              float: left;
+              width: 90%;
+              position: relative;
+            }
+            p:before{
+              vertical-align: middle;
+              content: "";
+              display: inline-block;
+              position: absolute;
+              top: 2.25vh;
+              left: 5%;
+              width: 3vh;
+              height: 3vh;
+              background-size: 100%;
+              background-repeat: no-repeat;
+            }
+            .anticon-right{
+              color: rgba(168,168,168,0.6);
+            }
+          }
+          li:first-child>p:before{
+              background-image: url("../../layouts/image/myinfo.png");
+          }
+          li:last-child>p:before{
+              background-image: url("../../layouts/image/download.png");
+          }
+          li:nth-child(2)>p:before{
+            background-image: url("../../layouts/image/vip.png");
+          }
+          li:nth-child(3)>p:before{
+            background-image: url("../../layouts/image/addfriend.png");
+          }
+          //li:nth-child(4)>p:before{
+          //  background-image: url("../../layouts/image/opinion.png");
+          //}
+          li:before{
+
+          }
+          li:last-child{
+            border-bottom-width: 0;
+          }
+        }
+      }
+      .setting-operation{
+        border-radius: 10px;
+        background-color: #312a59;
+        height: 7.5vh;
+        margin-top: 10vh;
+        line-height: 7.5vh;
+        p{
+          font-size: 4vw;
+          color: #ccc;
+          padding-left: 15%;
+          margin: 0;
+          float: left;
+          width: 90%;
+          position: relative;
+        }
+        p:before{
+          vertical-align: middle;
+          content: "";
+          display: inline-block;
+          position: absolute;
+          top: 2.25vh;
+          left: 5%;
+          width: 3vh;
+          height: 3vh;
+          background-size: 100%;
+          background-image: url("../../layouts/image/setting.png");
+        }
+        .anticon-right{
+          color: #a8a8a8;
+        }
+      }
+    }
+  }
+}
