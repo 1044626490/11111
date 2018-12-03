@@ -138,7 +138,7 @@ class Index extends React.Component {
             msg:"",
             isSysMsg:false,
             isInvite:false,
-            tabsValue:"1",
+            tabsValue:"2",
             isTalking:false,
             isHasTask:false
             // talkMsg:["123123","少时诵诗书所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所"]

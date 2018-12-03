@@ -36,6 +36,12 @@ class PayPage extends React.Component{
                 })
             })
         }
+        if(id === "001"|| id === "002" || id === "003"){
+            this.setState({
+                value:4,
+                price:price*100
+            })
+        }
         // if(id !== "0"&&price !== "0"){
         //     this.setState({id, price})
         // }else {
@@ -86,7 +92,6 @@ class PayPage extends React.Component{
                     }
                 }else if(this.state.value === 4){
                     //金币开通会员
-                    console.log(this.state.price,this.props.userInfo.data.gold)
                     if(this.state.id === "001"){
                         month = Number(this.state.price)/5000
                     }else if(this.state.id === "002"){
@@ -180,7 +185,7 @@ class PayPage extends React.Component{
                         {/*</div>*/}
                         {/*}*/}
                             {
-                                id !== "001"||id !== "002"||id !== "003"?<div className="pay">
+                                id !== "001"&&id !== "002"&&id !== "003"?<div className="pay">
                                     <Radio value={3}><span className="pay-name pay3">微信支付</span></Radio>
                                 </div>:null
                             }

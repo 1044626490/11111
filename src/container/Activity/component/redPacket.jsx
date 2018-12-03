@@ -153,7 +153,7 @@ class redPacket extends React.Component{
     componentWillMount(){
         Api.getTime().then(res => {
             let timestamp1 = res.data*1000;
-            let end =Date.parse(new Date("2018-12-02 20:30:10"));
+            let end =Date.parse(new Date("2018-12-09 20:30:10"));
             if(Number(timestamp1) >= Number(end)){
                 this.setState({
                     isActivity:false,
@@ -404,7 +404,7 @@ class redPacket extends React.Component{
                             params.type = 3;
                         }
                         Api.redEnvelope(params);
-                        clearTimeout(setI)
+                        clearInterval(setI)
                     }
                 },1000)
             }

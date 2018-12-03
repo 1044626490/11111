@@ -195,7 +195,7 @@ class Sign extends React.Component{
         let line5 = null;
         let line6 = null;
         let line7 = null;
-        let line8 = line_first-((total_day-28)*8);
+        let line8 = line_first-((total_day-26)*8);
         let line8_right = (31-total_day)*8+34.8;
         if(today <= 7){
             line1 = 62.93 - (today*8);

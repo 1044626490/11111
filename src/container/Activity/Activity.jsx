@@ -22,7 +22,7 @@ class Activity extends React.Component{
                 //     callback:(item)=>{item.isActivity?window.location.href = "#/Dashboard/Recharge":null}
                 // },
                 {
-                    startTime:"2018-11-23 18:00:00",
+                    startTime:"2018-12-03 18:00:00",
                     img:require("../../layouts/activity/sliver.png"),
                     name:"今日福利",
                     info:"玩家每日登录游戏，均可免费领取2000银币。银币可用于体验场试玩游戏。",
@@ -31,26 +31,26 @@ class Activity extends React.Component{
                     type: 2,
                     callback:(item)=>{item.isActivity?Api.receiveSilver().then(res => {message.success(res.msg)}):null}
                 },
-                // {
-                //     startTime:"2018-11-23 18:00:00",
-                //     img:require("../../layouts/activity/into.png"),
-                //     name:"坐以待币",
-                //     info:"11月23日至12月1日，每天20:00、20:15、20:30各一场红包雨。",
-                //     value:"参加活动",
-                //     isActivity:true,
-                //     type: 1,
-                //     callback:(item)=>{item.isActivity?window.location.href = "#/Dashboard/redPacket":null}
-                // },
                 {
-                    startTime:"2018-11-23 18:00:00",
-                    img:require("../../layouts/activity/challenge.png"),
-                    name:"挑战赛",
-                    info:"所有玩家均可免费报名参加，比赛结束后前十名可得大量金币奖励。注：必须赛前报名",
-                    value:"免费报名",
+                    startTime:"2018-12-03 18:00:00",
+                    img:require("../../layouts/activity/into.png"),
+                    name:"坐以待币",
+                    info:"12月3日至12月9日，每天20:00、20:15、20:30各一场红包雨。",
+                    value:"参加活动",
                     isActivity:true,
                     type: 1,
-                    callback:()=>{window.location.href = "#/Dashboard/ChallengeMatch"}
+                    callback:(item)=>{item.isActivity?window.location.href = "#/Dashboard/redPacket":null}
                 },
+                // {
+                //     startTime:"2018-11-23 18:00:00",
+                //     img:require("../../layouts/activity/challenge.png"),
+                //     name:"挑战赛",
+                //     info:"所有玩家均可免费报名参加，比赛结束后前十名可得大量金币奖励。注：必须赛前报名",
+                //     value:"免费报名",
+                //     isActivity:true,
+                //     type: 1,
+                //     callback:()=>{window.location.href = "#/Dashboard/ChallengeMatch"}
+                // },
             ],
             // isActivity:[true,true,true]
         }
@@ -59,7 +59,7 @@ class Activity extends React.Component{
     componentDidMount(){
         this.getMyCoupon();
         let time = Date.parse(new Date());
-        let end =Date.parse(new Date("2018-12-02"));
+        let end =Date.parse(new Date("2018-12-09"));
         let data = this.state.data;
         if(Number(time) >= Number(end)){
             data[1].isActivity = false;
