@@ -2,6 +2,8 @@ import React from "react"
 import {Avatar, Button, Icon, Input, message, Modal, Progress, Upload} from "antd";
 import "./MyInfoModal.less"
 import Api from '~/until/api';
+import {fetchPostsGetUser} from '~/action/getUserInfo';
+import connect from "react-redux/es/connect/connect";
 
 class MyInfoModal extends React.Component{
     constructor(props) {
@@ -61,6 +63,20 @@ class MyInfoModal extends React.Component{
         }
     }
 
+    // getUserInfo = () =>{
+    //     this.props.dispatch(fetchPostsGetUser()).then((res) => {
+    //         let rate = 0;
+    //         if(res.data.total_office !== 0){
+    //             rate = Math.round(res.data.victory/res.data.total_office);
+    //         }
+    //         this.setState({
+    //             myInfo:res.data,
+    //         })
+    //     }).catch((err) => {
+    //         message.error(err.msg)
+    //     })
+    // };
+
     changeHeader(file){
         Api.uploadMyHead({file:file.file}).then((res) => {
             message.success(res.msg)
@@ -74,6 +90,11 @@ class MyInfoModal extends React.Component{
 
     getUserInfo(){
         this.props.getUserInfo();
+        this.props.dispatch(fetchPostsGetUser()).then((res) => {
+
+        }).catch((err) => {
+
+        })
         this.setState({
             isResetMyInfo:false
         })
@@ -120,7 +141,7 @@ class MyInfoModal extends React.Component{
                                 </p>
                             </div>
                             <div className="my-account">
-                                <span>提现账号：</span><span>{info.alipay}</span>
+                                <span>退款账号：</span><span>{info.alipay}</span>
                                 <Button className="open-reset-modal" onClick={()=>{this.setState({isResetMyInfo:true})}}>编辑</Button>
                             </div>
                         </div>
@@ -171,4 +192,8 @@ class MyInfoModal extends React.Component{
     }
 }
 
-export default MyInfoModal
+const mapStateToProps = state => {
+    const {userInfo} = state;
+    return {userInfo}
+};
+export default connect(mapStateToProps)(MyInfoModal)

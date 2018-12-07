@@ -32,6 +32,7 @@ class PersonalInformation extends React.Component {
             }
             this.setState({
                 myInfo:res.data,
+                isOpenModel:false
             })
         }).catch((err) => {
             message.error(err.msg)

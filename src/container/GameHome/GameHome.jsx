@@ -24,6 +24,19 @@ let tenSeconds = "0",
 //         window.location.href = "#/Dashboard/index"
 //     }
 // });
+let hiddenProperty = 'hidden' in document ? 'hidden' :
+    'webkitHidden' in document ? 'webkitHidden' :
+        'mozHidden' in document ? 'mozHidden' :
+            null;
+let visibilityChangeEvent = hiddenProperty.replace(/hidden/i, 'visibilitychange');
+let onVisibilityChange = function(){
+    if (!document[hiddenProperty]) {
+
+    }else{
+        window.location.href = "#/Dashboard/index"
+    }
+};
+document.addEventListener(visibilityChangeEvent, onVisibilityChange);
 class GameHome extends React.Component{
     constructor(props) {
         super(props);
@@ -68,7 +81,8 @@ class GameHome extends React.Component{
             shield:false,
             isInviteStranger:true,
             isOverGame:false,
-            isLetGo:false
+            isLetGo:false,
+            isG:false
         }
     }
 
@@ -279,7 +293,8 @@ class GameHome extends React.Component{
                             isGameOver:false,
                             isOpenPlayer:false,
                             backTime:3,
-                            room_order:data.room_order
+                            room_order:data.room_order,
+                            isG:false
                         });
                         clearTimeout(setI)
                     },100);
@@ -337,6 +352,9 @@ class GameHome extends React.Component{
 
     //游戏开始
     startGame = () => {
+        if(this.state.isG){
+           return false
+        }
         let userData = [];
         for(let i=0;i<6;i++){
             if(this.state.userData[i].uid){
@@ -348,10 +366,18 @@ class GameHome extends React.Component{
             room_id:this.state.homeId,
             type:this.props.match.params.homeId.indexOf("S") >= 0?"1":"2"
         };
+        this.setState({
+            isG:true
+        });
         Api.beginGame(params).then((res) =>{
-
+            this.setState({
+                isG:false
+            });
         }).catch(err => {
             message.info(err.msg);
+            this.setState({
+                isG:false
+            });
         });
     };
 
@@ -462,7 +488,8 @@ class GameHome extends React.Component{
             isGameOver:false,
             NOme:0,
             amIReady:false,
-            isOverGame:true
+            isOverGame:true,
+            isG:false
         });
         if(this.state.isHomeowner){
             Api.userReadyHome({room_id:this.state.homeId}).then(res => {

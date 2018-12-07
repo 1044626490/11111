@@ -4,6 +4,7 @@ import "./Shopping.less"
 import HeaderNav from "../../components/headerNav/headerNav";
 import connect from "react-redux/es/connect/connect";
 import Api from '~/until/api';
+import {fetchPostsGetUser} from '~/action/getUserInfo';
 
 const TabPane = Tabs.TabPane;
 const RadioGroup = Radio.Group;
@@ -63,6 +64,74 @@ class Shopping extends React.Component{
             time:null
         }
     }
+
+    // componentDidMount(){
+    //     this.justUser()
+    // }
+    //
+    // justUser(){
+    //     let ua = navigator.userAgent.toLowerCase();//获取判断用的对象
+    //     if (ua.match(/MicroMessenger/i) == "micromessenger") {
+    //         let hash = window.location.hash;
+    //         let reg2 = /([^oid=]+)$/;
+    //         let params = null;
+    //         let code = this.props.userInfo.code;
+    //         if (hash.indexOf("oid=") >= 0) {
+    //             let oid = hash.split("=")
+    //             let openid = oid[oid.length-1];
+    //             params = {openid: openid};
+    //             localStorage.setItem("oid",openid)
+    //             if(localStorage.getItem("uid")){
+    //                 params = {
+    //                     openid: openid,
+    //                     refer_id: localStorage.getItem("uid")
+    //                 }
+    //             }
+    //         }else {
+    //             if (localStorage.getItem("oid")) {
+    //                 params = {openid: localStorage.getItem("oid")};
+    //                 if(localStorage.getItem("uid")){
+    //                     params = {
+    //                         openid:localStorage.getItem("oid"),
+    //                         refer_id: localStorage.getItem("uid")
+    //                     }
+    //                 }
+    //             }
+    //         }
+    //         if (hash.indexOf("#/Dashboard/index") >= 0) {
+    //             if(!this.props.userInfo.data){
+    //                 this.props.dispatch(fetchPostsGetUser(params)).then((res) => {
+    //                     this.setState({
+    //                         isLogin: false,
+    //                         userInfo: res.data
+    //                     });
+    //                 }).catch((err) => {
+    //                     if (this.props.userInfo.code === "0000"||this.props.userInfo.data){
+    //
+    //                     }else if(this.props.userInfo.code === 20009){
+    //                         this.setState({
+    //                             isWxBindPhone:true
+    //                         });
+    //                     }else {
+    //                         window.location.href = 'http://api.times168.net/index/wxlogin/login'
+    //                     }
+    //                 })
+    //             }
+    //         }
+    //     }else {
+    //         this.props.dispatch(fetchPostsGetUser()).then((res) => {
+    //             this.setState({
+    //                 isLogin: false,
+    //                 userInfo: res.data
+    //             });
+    //         }).catch((err) => {
+    //             this.props.userInfo.code === "0000" ? null :
+    //                 this.setState({
+    //                     isLogin: true,
+    //                 })
+    //         })
+    //     }
+    // }
 
     //跳转购买会员页面
     buyVip(index,type){

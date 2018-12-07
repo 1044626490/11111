@@ -170,85 +170,87 @@ class Index extends React.Component {
     }
 
     getWebsocket = (res) =>{
-        this.setI3 = setInterval(() => {
-            let data = JSON.stringify({"type": "ping"});
-            this.webSocket.send(data)
-        }, 9000);
-        this.webSocket.onmessage = (e)=> {
-            let data = JSON.parse(e.data);
-            let userData = data.data;
-            let type = data.type || "";
-            switch (type) {
-                case "bind":
-                    // localStorage.setItem("inviteData",this.state.myInvite);
-                    break;
-                case 'invite':
-                    userData.type = 1;
-                    let arr = localStorage.getItem("inviteData");
-                    if (arr&&arr.length > 0){
-                        if(arr.indexOf(JSON.stringify(userData)) >= 0){
-                            return false
-                        }
-                        if(arr.indexOf(";") > 0){
-                            if(arr.split(";").length === 10){
-                                let arr1 = arr.concat(";"+JSON.stringify(userData));
-                                let arr2 = arr1.split(";");
-                                arr = arr2.slice(1,11);
-                                arr1 = arr.join(";");
-                                arr = arr1
-                            }else {
-                                let arr1 = arr.concat(";"+JSON.stringify(userData))
-                                arr = arr1
+        if(window.location.hash.indexOf("#/Dashboard/index") >= 0){
+            this.setI3 = setInterval(() => {
+                let data = JSON.stringify({"type": "ping"});
+                this.webSocket.send(data)
+            }, 9000);
+            this.webSocket.onmessage = (e)=> {
+                let data = JSON.parse(e.data);
+                let userData = data.data;
+                let type = data.type || "";
+                switch (type) {
+                    case "bind":
+                        // localStorage.setItem("inviteData",this.state.myInvite);
+                        break;
+                    case 'invite':
+                        userData.type = 1;
+                        let arr = localStorage.getItem("inviteData");
+                        if (arr&&arr.length > 0){
+                            if(arr.indexOf(JSON.stringify(userData)) >= 0){
+                                return false
                             }
-                        }else {
-                            let arr1 = [arr];
-                            arr1.push(JSON.stringify(userData));
-                            arr = arr1.join(";")
+                            if(arr.indexOf(";") > 0){
+                                if(arr.split(";").length === 10){
+                                    let arr1 = arr.concat(";"+JSON.stringify(userData));
+                                    let arr2 = arr1.split(";");
+                                    arr = arr2.slice(1,11);
+                                    arr1 = arr.join(";");
+                                    arr = arr1
+                                }else {
+                                    let arr1 = arr.concat(";"+JSON.stringify(userData))
+                                    arr = arr1
+                                }
+                            }else {
+                                let arr1 = [arr];
+                                arr1.push(JSON.stringify(userData));
+                                arr = arr1.join(";")
+                            }
+                        } else {
+                            arr = JSON.stringify(userData);
                         }
-                    } else {
-                        arr = JSON.stringify(userData);
-                    }
-                    localStorage.setItem("inviteData",arr);
-                    if(arr.indexOf(";") < 0){
-                        let arr1 = [arr];
-                        arr = arr1
-                    }else {
-                        arr = arr.split(";")
-                    }
-                    if(this.state.tabsValue !== "3"){
+                        localStorage.setItem("inviteData",arr);
+                        if(arr.indexOf(";") < 0){
+                            let arr1 = [arr];
+                            arr = arr1
+                        }else {
+                            arr = arr.split(";")
+                        }
+                        if(this.state.tabsValue !== "3"){
+                            this.setState({
+                                isInvite:true
+                            })
+                        }
                         this.setState({
-                            isInvite:true
+                            myInvite:arr
                         })
-                    }
-                    this.setState({
-                        myInvite:arr
-                    })
-                    break;
-                case "sys_hint":
-                    // let smt = {
-                    //     username:userData[0],
-                    //     type: userData[1],
-                    //     name:userData[2]
-                    // };
-                    if(this.state.tabsValue !== "1"){
-                        this.setState({
-                            isSysMsg:true
-                        })
-                    }
-                    this.Carousel(userData,"systemMsg");
-                    break;
-                case "speak":
-                    this.Carousel(userData,"speaking");
-                default:
-                    break;
+                        break;
+                    case "sys_hint":
+                        // let smt = {
+                        //     username:userData[0],
+                        //     type: userData[1],
+                        //     name:userData[2]
+                        // };
+                        if(this.state.tabsValue !== "1"){
+                            this.setState({
+                                isSysMsg:true
+                            })
+                        }
+                        this.Carousel(userData,"systemMsg");
+                        break;
+                    case "speak":
+                        this.Carousel(userData,"speaking");
+                    default:
+                        break;
+                }
+            };
+            if(window.location.hash.indexOf("#/Dashboard/index") >= 0) {
+                let data = JSON.stringify({
+                    "type": "bind",
+                    "uid": res.data.uid,
+                });
+                this.webSocket.send(data);
             }
-        };
-        if(window.location.hash.indexOf("#/Dashboard/index") >= 0) {
-            let data = JSON.stringify({
-                "type": "bind",
-                "uid": res.data.uid,
-            });
-            this.webSocket.send(data);
         }
     };
 
@@ -774,21 +776,9 @@ class Index extends React.Component {
                 let openid = oid[oid.length-1];
                 params = {openid: openid};
                 localStorage.setItem("oid",openid)
-                if(localStorage.getItem("uid")){
-                    params = {
-                        openid: openid,
-                        refer_id: localStorage.getItem("uid")
-                    }
-                }
             }else {
                 if (localStorage.getItem("oid")) {
                     params = {openid: localStorage.getItem("oid")};
-                    if(localStorage.getItem("uid")){
-                        params = {
-                            openid:localStorage.getItem("oid"),
-                            refer_id: localStorage.getItem("uid")
-                        }
-                    }
                 }
             }
             if (hash.indexOf("#/Dashboard/index") >= 0) {
@@ -829,7 +819,10 @@ class Index extends React.Component {
     render(){
         let systemMsg = localStorage.getItem("systemMsg")?localStorage.getItem("systemMsg").split(";"):[];
         let speaking = localStorage.getItem("speaking")?localStorage.getItem("speaking").split(";"):[];
-        let arr = [];
+        let arr = [
+            ["12.03 18:00","挑战十秒正式公测"],
+            ["12.03 18:00","12月3号到12月9号，每晚8:00、8:15、8:30各一场红包雨，进入活动页面查看详情"]
+        ];
         let arr1 = [];
         for(let i=0;i<systemMsg.length;i++){
             arr.push(systemMsg[i].split("-"))
@@ -939,9 +932,15 @@ class Index extends React.Component {
                                     {/*</li>*/}
                                     {
                                         systemMsg.length > 0?systemMsg.map((item, index) => {
-                                            return <li>
-                                                <span>[{item[3]}]:玩家{item[0]}{item[1]}{item[2]}</span>
-                                            </li>
+                                            if(index > 1){
+                                                return <li key={index}>
+                                                    <span>[{item[3]}]:玩家{item[0]}{item[1]}{item[2]}</span>
+                                                </li>
+                                            }else {
+                                                return <li key={index}>
+                                                    <span>[{item[0]}]:{item[1]}</span>
+                                                </li>
+                                            }
                                         }):<li className="no-message">
                                             <p>暂无消息...</p>
                                         </li>
@@ -985,7 +984,7 @@ class Index extends React.Component {
                                                     <span className="invite-invite">[{JSON.parse(item).is_friend?"好友邀请":"随机邀请"}]：</span>
                                                     <span className="invite-info"><span>{JSON.parse(item).is_friend?"好友":"玩家"}“</span>
                                                     <span className="invite-name">{JSON.parse(item).username}</span><span>”邀请你进入{JSON.parse(item).room_id}</span>&nbsp;
-                                                    ({JSON.parse(item).room_gold}金币场) {JSON.parse(item).type?
+                                                    ({JSON.parse(item).room_gold}{JSON.parse(item).room_id.indexOf("S") >= 0?"体验场":"金币场"}) {JSON.parse(item).type?
                                                         <span className="invite">
                                                         <span onClick={()=>this.inviteFriend(index,JSON.parse(item))}>接受</span>
                                                         <span onClick={()=>this.refuseInvite(index)}>拒绝</span>
@@ -1219,7 +1218,7 @@ class Index extends React.Component {
                     </div>
                 </Modal>
                 {
-                    this.props.userInfo.code === "0000"?<MyInfoModal info={this.props.userInfo.data} isResetMyInfo={this.state.isResetMyInfo} openModal={()=>this.openInfoModal()}
+                    this.props.userInfo.code === "0000"&&this.state.isOpenInfoModel?<MyInfoModal info={this.props.userInfo.data} isResetMyInfo={this.state.isResetMyInfo} openModal={()=>this.openInfoModal()}
                                                                      isOpenModel={this.state.isOpenInfoModel}
                                                                      getUserInfo={()=>{
                                                                          this.justUser();

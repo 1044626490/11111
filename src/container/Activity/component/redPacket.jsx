@@ -20,13 +20,11 @@ $(document).on("touchstart",".small",(e)=>{
         num++
     }
     let className = e.target.classList[e.target.classList.length-2];
-    packet += 10;
+    packet += 5;
+    // console.log(5)
     localStorage.setItem("packet",packet);
     $(".num").text(packet);
-    e.target.style.cssText = "transition-duration: 0.1s;opacity: 0";
-    // $("."+className).animate({
-    //     opacity: 0,
-    // },100);
+    e.target.style.cssText = "display: none";
     let setT =setTimeout(()=>{
         num = 0;
         clearTimeout(setT)
@@ -40,13 +38,11 @@ $(document).on("touchstart",".small-middle",(e)=>{
         num++
     }
     let className = e.target.classList[e.target.classList.length-2];
-    packet += 30;
+    packet += 10;
+    // console.log(10)
     localStorage.setItem("packet",packet);
     $(".num").text(packet);
-    e.target.style.cssText = "transition-duration: 0.1s;opacity: 0";
-    // $("."+className).animate({
-    //     opacity: 0,
-    // },100);
+    e.target.style.cssText = "display: none";
     let setT =setTimeout(()=>{
         num = 0;
         clearTimeout(setT)
@@ -60,13 +56,11 @@ $(document).on("touchstart",".middle-middle",(e)=>{
         num++
     }
     let className = e.target.classList[e.target.classList.length-2];
-    packet += 50;
+    packet += 15;
+    // console.log(15)
     localStorage.setItem("packet",packet)
     $(".num").text(packet);
-    e.target.style.cssText = "transition-duration: 0.1s;opacity: 0";
-    // $("."+className).animate({
-    //     opacity: 0,
-    // },100);
+    e.target.style.cssText = "display: none";
     let setT =setTimeout(()=>{
         num = 0;
         clearTimeout(setT)
@@ -80,13 +74,11 @@ $(document).on("touchstart",".big-middle",(e)=>{
         num++
     }
     let className = e.target.classList[e.target.classList.length-2];
-    packet += 100;
+    packet += 20;
+    // console.log(20)
     localStorage.setItem("packet",packet)
     $(".num").text(packet);
-    e.target.style.cssText = "transition-duration: 0.1s;opacity: 0";
-    // $("."+className).animate({
-    //     opacity: 0,
-    // },100);
+    e.target.style.cssText = "display: none";
     let setT =setTimeout(()=>{
         num = 0;
         clearTimeout(setT)
@@ -100,13 +92,11 @@ $(document).on("touchstart",".biger-middle",(e)=>{
         num++
     }
     let className = e.target.classList[e.target.classList.length-2];
-    packet += 200;
+    packet += 25;
+    // console.log(25)
     localStorage.setItem("packet",packet)
     $(".num").text(packet);
-    e.target.style.cssText = "transition-duration: 0.1s;opacity: 0";
-    // $("."+className).animate({
-    //     opacity: 0,
-    // },100);
+    e.target.style.cssText = "display: none";
     let setT =setTimeout(()=>{
         num = 0;
         clearTimeout(setT)
@@ -121,13 +111,12 @@ $(document).on("touchstart",".biger",(e)=>{
     }
 
     let className = e.target.classList[e.target.classList.length-2];
-    packet += 500;
+    packet += 30;
+    // console.log(30)
     localStorage.setItem("packet",packet);
-    Api.sysSendMessage({uid:this.state.uid,type:"抢得",name:"500金大红包"});
+    // Api.sysSendMessage({uid:this.state.uid,type:"抢得",name:"30金大红包"});
     $(".num").text(packet);
-    $("."+className).animate({
-        opacity: 0,
-    },100);
+    e.target.style.cssText = "display: none";
     let setT =setTimeout(()=>{
         num = 0;
         clearTimeout(setT)
@@ -140,7 +129,7 @@ class redPacket extends React.Component{
         this.setI = null;
         this.setI1 = null;
         this.state = {
-            uid:this.props.userInfo.data.uid,
+            uid:1,
             hour:0,
             min:0,
             sec:0,
@@ -174,6 +163,7 @@ class redPacket extends React.Component{
         //     timestamp1 =Date.parse(new Date());
         // }
         let today = new Date(new Date().toLocaleDateString()).getTime();
+        // timestamp1 = today + 71990000;
         let oClock = today + 72000000;
         this.setState({
             isOpenModel:false
@@ -196,49 +186,7 @@ class redPacket extends React.Component{
                 }
             }
         }
-        // let begin_time = "20:00:00";
-        // let end_time = "20:01:00";
-        // // if(timestamp1 >= today + 72000000&&timestamp1 <= today + 72060000){
-        // if(timestamp1 >= today + 72000000&&timestamp1 <= today + 72010000){
-        //     Api.isReciveActive({begin_time,end_time}).then(res =>{
-        //         if(res.data.status){
-        //             oClock = today + 73800000;
-        //             this.setState({
-        //                 type:"【下一场红包雨将于20:30开始】"
-        //             });
-        //         }
-        //     }).catch(err =>{
-        //     });
-        // }else if(timestamp1 >= today + 73800000&&timestamp1 <= today + 73810000){
-        //     begin_time = "20:30:00";
-        //     end_time = "20:31:00";
-        //     Api.isReciveActive({begin_time,end_time}).then(res =>{
-        //         if(res.data.status){
-        //             oClock = today + 75600000;
-        //             this.setState({
-        //                 type:"【下一场红包雨将于21:00开始】"
-        //             });
-        //         }
-        //     }).catch(err =>{
-        //
-        //     });
-        // }else if(timestamp1 >= today + 75600000&&timestamp1 <= today + 75610000){
-        //     begin_time = "21:00:00";
-        //     end_time = "21:01:00";
-        //     Api.isReciveActive({begin_time,end_time}).then(res =>{
-        //         if(res.data.status){
-        //             oClock = today + 158400000;
-        //             this.setState({
-        //                 type:"【下一场红包雨将于次日20:00开始】"
-        //             });
-        //         }
-        //     }).catch(err =>{
-        //
-        //     });
-        // }
         let backtime = Math.round((oClock - timestamp1)/1000);
-        // this.redPacketDown();
-        // return false;
         if(backtime <= 0){
             this.redPacketDown(Math.abs(backtime),oClock,today);
             this.setState({
@@ -285,18 +233,18 @@ class redPacket extends React.Component{
         this.setI = setInterval(()=>{
             count++;
             let rad = Math.random().toFixed(4)*100;
-            let left = 0;
-            do {
-                left = Math.random()*85
-            } while (Math.abs(left - posLeft) > 20);
-            for(let i=0;i<100;i++){
-                left = Math.random()*85;
-                if(Math.abs(left - posLeft) > 20){
-                    posLeft = left;
-                    break
-                }
-            }
-            if(rad <= 0.2){
+            let left = Math.random()*85;
+            // do {
+            //     left = Math.random()*85
+            // } while (Math.abs(left - posLeft) > 20);
+            // for(let i=0;i<100;i++){
+            //     left = Math.random()*85;
+            //     if(Math.abs(left - posLeft) > 20){
+            //         posLeft = left;
+            //         break
+            //     }
+            // }
+            if(rad <= 0.02){
                 $(".red-packet-wrap").append("<div class='big biger biger"+count+" red-packet-item'></div>");
                 let dom = $(".biger"+count);
                 let sp = Math.random()*500;
@@ -323,7 +271,7 @@ class redPacket extends React.Component{
                         num
                     })
                 }
-            }else if(rad <= 80){
+            }else if(rad <= 85){
                 $(".red-packet-wrap").append("<div class='small smaller"+count+" red-packet-item'></div>");
                 let dom = $(".smaller"+count);
                 let sp = Math.random()*500;
@@ -387,7 +335,8 @@ class redPacket extends React.Component{
                     clearTimeout(setT)
                 },speed)
             }
-            if(count >= time*5||count >= 50){
+            if(count >= time*5||count >= 50||packet >= 300){
+                console.log(count);
                 clearInterval(this.setI);
                 clearInterval(this.setI1);
                 let setI = setInterval(()=>{
@@ -403,7 +352,7 @@ class redPacket extends React.Component{
                         }else {
                             params.type = 3;
                         }
-                        Api.redEnvelope(params);
+                        // Api.redEnvelope(params);
                         clearInterval(setI)
                     }
                 },1000)
@@ -505,22 +454,22 @@ class redPacket extends React.Component{
                                                   closable={false} destroyOnClose={true}>
                         <div className="player-info">
                             <span className="close" onClick={()=>{
-                                    packet = 0;
-                                    Api.getTime().then(res => {
-                                        let timestamp1 = res.data*1000;
-                                        let end =Date.parse(new Date("2018-12-02 20:30:10"));
-                                        if(Number(timestamp1) >= Number(end)){
-                                            this.setState({
-                                                isActivity:false,
-                                                type:"【活动结束,等待下次活动】"
-                                            })
-                                        }else {
-                                            this.backTime(false,timestamp1);
-                                        }
-                                    }).catch(err => {
-                                        message.warning("网络延迟，获取时间失败")
-                                    });
-                                }
+                                packet = 0;
+                                Api.getTime().then(res => {
+                                    let timestamp1 = res.data*1000;
+                                    let end =Date.parse(new Date("2018-12-02 20:30:10"));
+                                    if(Number(timestamp1) >= Number(end)){
+                                        this.setState({
+                                            isActivity:false,
+                                            type:"【活动结束,等待下次活动】"
+                                        })
+                                    }else {
+                                        this.backTime(false,timestamp1);
+                                    }
+                                }).catch(err => {
+                                    message.warning("网络延迟，获取时间失败")
+                                });
+                            }
                             }
                             >
                             </span>

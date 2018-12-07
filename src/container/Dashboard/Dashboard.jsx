@@ -147,19 +147,6 @@ if (ua.match(/MicroMessenger/i) == "micromessenger") {
         isExact: false
     })
 }
-let hiddenProperty = 'hidden' in document ? 'hidden' :
-    'webkitHidden' in document ? 'webkitHidden' :
-        'mozHidden' in document ? 'mozHidden' :
-            null;
-let visibilityChangeEvent = hiddenProperty.replace(/hidden/i, 'visibilitychange');
-let onVisibilityChange = function(){
-    if (!document[hiddenProperty]) {
-
-    }else{
-        window.location.href = "#/Dashboard/index"
-    }
-};
-document.addEventListener(visibilityChangeEvent, onVisibilityChange);
 class Dashboard extends React.Component {
     constructor(props) {
         super(props);
@@ -167,6 +154,15 @@ class Dashboard extends React.Component {
     }
 
     componentWillMount(){
+        if(!window.location.hash.indexOf("time") >= 0){
+            if(window.location.href.indexOf("?") >= 0){
+                let timess =Date.parse(new Date());
+                window.location.href = window.location.href.concat("&time="+timess)
+            }else {
+                let timess =Date.parse(new Date());
+                window.location.href = window.location.href.concat("?time="+timess)
+            }
+        }
         let href = window.location.href;
         Api.getUserInfo().then(res => {
         }).catch(err => {

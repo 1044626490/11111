@@ -12,7 +12,7 @@ const MyLoadingComponent = ({isLoading, error}) => {
         return <Spin tip="Loading..."></Spin>;
     }
     else if (error) {
-        return <div>Sorry, there was a problem loading the page.</div>;
+        return <div>Sorry, the server has reset.please close the app and start the app again</div>;
     }
     else {
         return null;
