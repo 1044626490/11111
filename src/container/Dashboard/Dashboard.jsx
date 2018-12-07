@@ -154,7 +154,7 @@ class Dashboard extends React.Component {
     }
 
     componentWillMount(){
-        if(!window.location.hash.indexOf("time") >= 0){
+        if(!window.location.hash.indexOf("time") >= 0&&window.location.hash.indexOf("uid=") === -1&&window.location.hash.indexOf("index") === -1&&window.location.hash.indexOf("oid") === -1){
             if(window.location.href.indexOf("?") >= 0){
                 let timess =Date.parse(new Date());
                 window.location.href = window.location.href.concat("&time="+timess)
