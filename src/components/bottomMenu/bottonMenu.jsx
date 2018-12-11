@@ -8,7 +8,7 @@ class BottomMenu extends React.Component {
             data : [
                 {
                     name:"大厅",
-                    href:"#/Dashboard/index",
+                    href:"#/Dashboard/TenSen",
                     img: require("../../layouts/image/message/ss/icon (1).png"),
                 },{
                     name:"活动",
@@ -46,7 +46,7 @@ class BottomMenu extends React.Component {
                                 </li>
                             })
                         }
-                        {/*<li onClick={()=>{window.location.href = "#/Dashboard/index"}}>*/}
+                        {/*<li onClick={()=>{window.location.href = "#/Dashboard/TenSen"}}>*/}
                             {/*<p className="home-icon">*/}
                                 {/*<span>大厅</span>*/}
                             {/*</p>*/}

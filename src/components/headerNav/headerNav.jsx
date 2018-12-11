@@ -22,18 +22,18 @@ class HeaderNav extends React.Component {
 
     goBackHistory(e){
         let hash = window.location.hash;
-        hash === "#/Dashboard/index"?window.location.href = "#/Dashboard/index":hash.indexOf("NewHome") !== -1?window.location.href = "#/Dashboard/index":window.history.back();
+        hash.indexOf("#/Dashboard/TenSen") >= 0?window.location.href = "#/Dashboard/index":hash.indexOf("NewHome") !== -1?window.location.href = "#/Dashboard/TenSen":window.history.back();
     }
 
     // componentWillMount(){
-    //     if(this.props.userInfo.code !== "0000"&&window.location.hash.indexOf("#/Dashboard/index") === -1) {
+    //     if(this.props.userInfo.code !== "0000"&&window.location.hash.indexOf("#/Dashboard/TenSen") === -1) {
     //         this.props.dispatch(fetchPostsGetUser()).then((res) => {
     //             window.location.reload()
     //         }).catch((err) => {
-    //             window.location.href = "#/Dashboard/index"
+    //             window.location.href = "#/Dashboard/TenSen"
     //         })
     //     }else {
-    //         if(window.location.hash.indexOf("#/Dashboard/index") === -1){
+    //         if(window.location.hash.indexOf("#/Dashboard/TenSen") === -1){
     //             Api.getUserInfo().then((res) => {
     //
     //             }).catch((err) => {
@@ -48,9 +48,7 @@ class HeaderNav extends React.Component {
         return (
             <div className="top-header">
                 <div className="top-name">
-                    {
-                        window.location.hash.indexOf("#/Dashboard/index") >= 0?null:<span onClick={(e)=>this.goBackHistory(e)}></span>
-                    }
+                    <span onClick={(e)=>this.goBackHistory(e)}></span>
                     <i>
                         {this.props.name}
                     </i>

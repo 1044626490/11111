@@ -1,0 +1,228 @@
+.treasure-box-header{
+  position: relative;
+  padding-top: 1.5vh;
+  padding-left: 3vh;
+  .header-top{
+    display: inline-block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 22.67vw;
+    background-size: 100% 100%;
+    //z-index: 99;
+    background-image: url("../../../layouts/image/index1/treasure/top1.png");
+  }
+  >img{
+    float: left;
+    border-radius: 50%;
+    width: 13.3vw;
+    height: 13.3vw;
+    border:1px solid #fff;
+    margin: 0 2vw 0 0;
+    position: relative;
+    z-index: 10;
+  }
+  .my-info{
+    color:#fff;
+    height: 13.3vw;
+    span{
+      font-size: 3vw;
+      display: inline-block;
+      height: 30%;
+      vertical-align: center;
+      position: relative;
+      top: 1vw;
+    }
+    .my-vip{
+      img{
+        width: 5vw;
+        height: 4.21vw;
+        position: relative;
+        left: 1vw;
+        top: -0.5vw;
+      }
+    }
+  }
+  .my-money-item{
+    position: absolute;
+    text-align: right;
+    top:2.5vh;
+    display: block;
+    margin-right: 2vw;
+    //width: 30vw;
+    padding: 0 6vw 0 8vw!important;
+    height: 5vw;
+    line-height: 5vw;
+    color: #fff;
+    //padding-right: 5vw;
+    background-color: rgba(0,0,0,.2);
+    //border:1px solid rgb(104,70,159);
+    border-radius: 3vw;
+    span:not(.my-trophy):before{
+      content: "";
+      display: inline-block;
+      width: 4.3vw;
+      height: 4.6vw;
+      background-size: 100%;
+      background-repeat: no-repeat;
+      background-position: center;
+      position: absolute;
+      top:40%;
+      transform: translateY(-50%);
+    }
+    span:not(.my-trophy) {
+      font-size: 3vw;
+      display: inline-block;
+      height: 5vw;
+      line-height: 5vw;
+      float: right;
+      margin-right: -0.5vw;
+    }
+    //span:not(.my-trophy){
+    //  font-size: 3vw;
+    //}
+    .my-money-item-pay{
+      content: "";
+      display: inline-block;
+      width: 5vw;
+      height: 5vw!important;
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+      background-position: center;
+      position: absolute;
+      top:45%;
+      transform: translateY(-50%);
+      background-image: url("../../../layouts/image/more_gold.png");
+      right: -0.5vw;
+    }
+    .my-money-item-pay:before{
+      display: none!important;
+    }
+  }
+  .my-money-item{
+    right: 4vw;
+    span:not(.my-trophy):before{
+      width: 5.5vw;
+      height: 6.3vw;
+      margin-top: 0.3vw;
+      background-image: url("../../../layouts/image/gold.png");
+      left: -0.5vw;
+    }
+  }
+  .my-sliver-item{
+    right: 25vw;
+    span:not(.my-trophy):before{
+      width: 5.8vw;
+      height: 6.5vw;
+      background-image: url("../../../layouts/image/silver.png");
+      left: -0.5vw;
+    }
+  }
+  .my-trophy{
+    display: block;
+    width: 9vw;
+    height: 9vw;
+    position: absolute;
+    bottom: -13vw;
+    right: -0.5vw;
+    background-image: url("../../../layouts/image/trophy.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  .my-task{
+    display: block;
+    width: 9vw;
+    height: 9vw;
+    position: absolute;
+    bottom: -13vw;
+    right: 10vw;
+    background-image: url("../../../layouts/image/1 (6).png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 11;
+  }
+  .has-task:after{
+    content: "";
+    display: inline-block;
+    width: 10vw;
+    height: 10vw;
+    position: absolute;
+    background-image: url("../../../layouts/image/message/ss/dontai.png");
+    background-size: 100% 100%;
+    left: -10%;
+    top: -10%;
+    z-index: 10;
+    animation: roa 1s infinite;
+    animation-timing-function: linear;
+  }
+  @keyframes roa{
+    0%{
+      transform: rotate(0deg);
+      opacity: 1;
+    }
+    //25%{
+    //  opacity: 0;
+    //}
+    50%{
+      transform: rotate(180deg);
+      opacity: 0.3;
+    }
+    //75%{
+    //  opacity: 0;
+    //}
+    100%{
+      opacity: 1;
+      transform: rotate(360deg);
+    }
+  }
+  //.relief-payment{
+  //  display: block;
+  //  width: 9vw;
+  //  height: 9vw;
+  //  position: absolute;
+  //  bottom: -13vw;
+  //  right: 20vw;
+  //  background-image: url("../../layouts/image/1 (5).png");
+  //  background-size: 100% 100%;
+  //  background-repeat: no-repeat;
+  //  background-position: center;
+  //}
+  .sign-in{
+    display: block;
+    width: 9vw;
+    height: 9vw;
+    position: absolute;
+    bottom: -13vw;
+    right: 20vw;
+    //bottom: -13vw;
+    //right: 31vw;
+    background-image: url("../../../layouts/image/sign.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  .has-sign{
+    background-image: url("../../../layouts/image/sign.png");
+    z-index: 11;
+  }
+  .not-sign:after{
+    content: "";
+    display: inline-block;
+    width: 10vw;
+    height: 10vw;
+    position: absolute;
+    background-image: url("../../../layouts/image/message/ss/dontai.png");
+    background-size: 100% 100%;
+    left: -10%;
+    top: -10%;
+    z-index: 10;
+    animation: roa 1s infinite;
+    animation-timing-function: linear;
+  }
+  .my-trophy:after{
+
+  }
+}

@@ -10,30 +10,20 @@ import "./GameHome.less"
 
 let setI2;
 let homeId = null;
+let startGames = false;
 let tenSeconds = "0",
     millisecond = "0";
-// document.addEventListener('webkitvisibilitychange',function()
-// {
-//     if(document.webkitVisibilityState=='hidden'){
-//             window.location.href = "#/Dashboard/index"
-//         }
-// });
-// document.addEventListener('mozvisibilitychange',function()
-// {
-//     if(document.mozVisibilityState=='hidden'){
-//         window.location.href = "#/Dashboard/index"
-//     }
-// });
 let hiddenProperty = 'hidden' in document ? 'hidden' :
     'webkitHidden' in document ? 'webkitHidden' :
         'mozHidden' in document ? 'mozHidden' :
             null;
 let visibilityChangeEvent = hiddenProperty.replace(/hidden/i, 'visibilitychange');
 let onVisibilityChange = function(){
-    if (!document[hiddenProperty]) {
-
-    }else{
-        window.location.href = "#/Dashboard/index"
+    if(startGames){
+        if (!document[hiddenProperty]) {
+        }else{
+            window.location.href = "#/Dashboard/TenSen"
+        }
     }
 };
 document.addEventListener(visibilityChangeEvent, onVisibilityChange);
@@ -102,6 +92,9 @@ class GameHome extends React.Component{
             this.ws.send(data)
         },9000)
     }
+
+    // shouldComponentUpdate(){
+    // }
 
     //点击开始游戏按钮
     gameStart(){
@@ -243,6 +236,7 @@ class GameHome extends React.Component{
                     })
                     break;
                 case 'rank_result':
+                    startGames = false
                     let NOme = this.state.NOme;
                     for(let j=0;j<userData.length-1;j++){
                         //两两比较，如果前一个比后一个大，则交换位置。
@@ -284,6 +278,7 @@ class GameHome extends React.Component{
                     });
                     break;
                 case 'begin_game':
+                    startGames = true
                     let setI = setTimeout(()=>{
                         this.setState({
                             isReadyGame:true,
@@ -314,7 +309,7 @@ class GameHome extends React.Component{
                     }else if(roomId.indexOf("H") >= 0){
                         window.location.href = "#/Dashboard/NewHome/2"
                     }else {
-                        window.location.href = "#/Dashboard/index"
+                        window.location.href = "#/Dashboard/TenSen"
                     }
                     break;
                 default:
@@ -353,6 +348,7 @@ class GameHome extends React.Component{
     //游戏开始
     startGame = () => {
         if(this.state.isG){
+            message.info("请勿多次点击，网络延迟，请等待");
            return false
         }
         let userData = [];
@@ -370,9 +366,7 @@ class GameHome extends React.Component{
             isG:true
         });
         Api.beginGame(params).then((res) =>{
-            this.setState({
-                isG:false
-            });
+
         }).catch(err => {
             message.info(err.msg);
             this.setState({
@@ -461,6 +455,7 @@ class GameHome extends React.Component{
 
     //游戏结束回到房间
     returnHome = () =>{
+        startGames = false;
         clearInterval(this.setI);
         let homeId = this.props.match.params.homeId;
         let level = homeId === "1"?"初级":homeId === "2"?"中级":"高级";
@@ -802,11 +797,11 @@ class GameHome extends React.Component{
                             </div>
                             {
                                 this.state.userType === "1"?<div className="button-operation">
-                                    <Button onClick={()=>{window.location.href = "#/Dashboard/index"}}>退出房间</Button>
+                                    <Button onClick={()=>{window.location.href = "#/Dashboard/TenSen"}}>退出房间</Button>
                                     <Button onClick={()=>this.returnHome()}>再来一次</Button>
                                 </div>:<div className="button-operation">
                                     <Button  onClick={()=>this.returnHome()}>继续观战</Button>
-                                    <Button onClick={()=>{window.location.href = "#/Dashboard/index"}}>退出房间</Button>
+                                    <Button onClick={()=>{window.location.href = "#/Dashboard/TenSen"}}>退出房间</Button>
                                 </div>
                             }
                         </div>

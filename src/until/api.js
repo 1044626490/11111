@@ -74,6 +74,8 @@ export default {
     refundRequest: (params) =>post(C.REFUND_REQUEST, params),
     refundMoneyNum: (params) =>post(C.REFUNF_MONEY_NUM, params),
     buyVip: (params) =>post(C.BUY_VIP, params),
+    treasureJoinGroup: (params) =>post(C.TREASURE_JOIN_GROUP, params),
+    treasureGrabBag: (params) =>post(C.TREASURE_GRAB_BAG, params),
 
     // logout: (params) => post(C.LOGOUT, params),
     // register: (params) => post(C.REGISTER, params),

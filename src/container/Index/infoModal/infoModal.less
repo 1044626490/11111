@@ -1,0 +1,314 @@
+.index-my-info-modal{
+  width: 80vw!important;
+  height: 95vw;
+  border-radius: 3vw;
+  //background-color: #5846a5!important;
+  padding: 0;
+  overflow: visible;
+  margin: 0;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%)!important;
+  //border: 0.5px solid #4c4c4c;
+  //box-shadow: 0 0 5px 1px #826da8 inset;
+  background-image: url("../../../layouts/image/index1/setting.png");
+  background-size: 100% 100%;
+  .ant-modal{
+    padding: 0;
+    border-radius: 3vw;
+    width: 98%!important;
+    position: absolute;
+    top: -1px;
+    left: 1%;
+    margin: 0;
+    .ant-modal-content{
+      border-radius: 3vw;
+      padding: 3.4%;
+      background-color: transparent;
+      box-shadow: none;
+      width: 100%;
+      height: 100%;
+      .ant-modal-body{
+        //height: 60vw;
+        padding: 0;
+        .info-body{
+          height: 65vw;
+          overflow: auto;
+          border-radius: 3vw;
+        }
+        .header-wrap{
+          padding: 4vw 3vw 3vw 5vw;
+          //background-color: #8e7be6;
+          border-radius: 10px;
+          position: relative;
+          .ant-avatar{
+            width: 18vw!important;
+            height: 18vw!important;
+            //border:1px solid #fff;
+            border-radius: 2vw;
+          }
+          .my-info{
+            padding-left: 5%;
+            font-size: 3vw;
+            height: 100%;
+            p{
+              white-space: nowrap;
+              margin-bottom: 1vh;
+              color: white;
+            }
+            input{
+              width: 50%;
+              height: 3vh;
+              margin-right: 10px;
+              //background-color: ;
+              border-radius: 5px;
+            }
+            .my-name{
+              color: #decc35;
+              letter-spacing: 1px;
+            }
+            width: 70%;
+            float: right;
+            text-align: left;
+          }
+          .my-account{
+            font-size: 3vw;
+            margin-top: 2vw;
+            padding: 0 2vw;
+            border-radius: 1vw;
+            //background-color: #7663c9;
+            white-space: nowrap;
+            color: white;
+            height: 6vw;
+            line-height: 6vw;
+            margin-right: 11vw;
+            position: relative;
+            span{
+              white-space: nowrap;
+            }
+            .open-reset-modal{
+              border: none;
+              border-radius: 0;
+              position: absolute;
+              right: -12vw;
+              top: 50%;
+              transform: translateY(-50%);
+              padding: 0;
+              height: 5vw!important;
+              line-height: 5vw!important;
+              background-image: url("../../../layouts/image/modal-btn-3.png");
+              background-size: 100% 100%;
+              color: white;
+              span{
+                float: left;
+                font-size: 2vw;
+                display: inline-block;
+                width: 10vw;
+                height: 5vw!important;
+                line-height: 4.5vw!important;
+              }
+            }
+          }
+        }
+        .my-class-medal{
+          padding: 5.3vw ;
+          margin-top: 5%;
+          //background-color: #8e7be6;
+          border-radius: 10px;
+          height: 43%;
+          .my-progress:first-child>p{
+            margin: 0;
+          }
+          .my-progress{
+            padding-left: 10%;
+            position: relative;
+            img{
+              width: 10%;
+              height: auto;
+              position: absolute;
+              left: -5%;
+            }
+            p{
+              font-size: 4vw;
+              color: white;
+              margin-bottom: 0;
+              margin-top: 15px;
+            }
+            .ant-progress{
+              font-size: 4vw;
+            }
+            .ant-progress-outer{
+              margin: 0;
+              padding: 0;
+              .ant-progress-success-bg{
+                //box-shadow: 0.5px 0 2px 0.5px rgba(29,22,68,0.25);
+              }
+            }
+            .ant-progress-text{
+              display: none;
+            }
+          }
+        }
+      }
+    }
+  }
+  .ant-modal-footer{
+    display: none;
+  }
+  color: white;
+  .anticon-close-circle{
+    z-index: 9999;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom:-12vw;
+    font-size: 8vw;
+    color: white;
+    svg{
+      color: white;
+      path{
+        color: white;
+      }
+    }
+  }
+}
+.reset-my-infos{
+  z-index: 9999;
+  .ant-modal-content{
+    padding: 0!important;
+  }
+  .anticon-close{
+    display: block;
+    width: 7vw;
+    height: 7vw;
+    position: absolute;
+    color: white;
+    top: 0;
+    right:2.5%;
+    svg{
+      display: none;
+    }
+  }
+  .reset-my-info-container{
+    height: 8vw;
+    line-height: 8vw;
+    color: white;
+    font-size: 5vw;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-align: center;
+    margin: 0;
+  }
+  .reset-info-item{
+    padding-top: 4vw;
+    text-align: center;
+    margin: 1vh auto;
+    border-radius: 2vw;
+    height: 68vw;
+    width: 89.81%!important;
+    //background-color: #8e7be1;
+    .ant-avatar{
+      height: 22vw!important;
+      width: 22vw!important;
+      border-radius: 2vw!important;
+    }
+    >div:first-child{
+      margin-top: 2vw;
+      margin-bottom: 0!important;
+    }
+    >div{
+      //margin-bottom: 1vw;
+      >span{
+        font-size: 3vw;
+        color: #776230;
+      }
+    }
+    .bind-item{
+      padding: 0.7vh 0;
+      font-size: 0;
+      margin-bottom: 1.5vw;
+      height: 4.2vh;
+      span{
+        display: inline-block;
+        height: 5vw;
+        line-height: 5vw;
+        font-size: 3vw;
+      }
+      .binding{
+        float: right;
+        margin-right: 8vw;
+        margin-left: 0;
+        display: inline-block;
+        //background-color: #7764ca;
+        width: 36vw;
+        height: 5vw;
+        line-height: 5vw;
+        border-radius: 1vw;;
+      }
+    }
+    .reset-myhead{
+      margin-top: 1vw;
+      width: 18vw;
+      height: 3vh;
+      padding: 0;
+      background-color: transparent;
+      background-image: url("../../../layouts/image/index1/treasure/rule.png");
+      background-size: 100% 100%;
+      border-width: 0;
+      //box-shadow: 0 0 3px 1px #7a7a7a;
+      vertical-align: middle;
+      color: white;
+      border-radius: 1vw;
+      margin-bottom: 2vw;
+      span{
+        float: left;
+        font-size: 3vw;
+        display: inline-block;
+        width: 18vw;
+        height: 3vh;
+        line-height: 3vh;
+      }
+    }
+    .save-reset{
+      margin-top: 7vw;
+      border-width: 0;
+      width: 20vw;
+      font-size: 4vw;
+      height: 8vw;
+      //box-shadow: 0 0 3px 1px #7a7a7a;
+      background-color: transparent;
+      color: white;
+      background-image: url("../../../layouts/image/index1/btn.png");
+      background-size: 100% 100%;
+      padding: 0;
+      border-radius: 1vw;
+      span{
+        float: left;
+        font-size: 4vw;
+        display: inline-block;
+        width: 20vw;
+        height: 8vw;
+        line-height: 8vw;
+      }
+    }
+    .name{
+      color: #d18719!important;
+    }
+    .ant-input{
+      font-size: 4vw;
+      color: #776230;
+      border-width: 0;
+      background-color: #f2d282;
+      margin: 1.5vw 0;
+      width: 36vw;
+      height: 7vw!important;
+      line-height: 7vw!important;
+      border-radius: 1vw;
+    }
+  }
+  .ant-avatar{
+    border: 1px solid #fff;
+    border-radius: 1vw;
+  }
+}

@@ -22,6 +22,42 @@ const routes = [
             loading: MyLoadingComponent
         }),
         isExact: false
+    },{
+        path: "TenSen",
+        component: Loadable({
+            loader: () => import("~/container/Index/TenSen/TenSen"),
+            loading: MyLoadingComponent
+        }),
+        isExact: false
+    },
+    {
+        path: "TreasureBox",
+        component: Loadable({
+            loader: () => import("~/container/Index/TreasureBox/TreasureBox"),
+            loading: MyLoadingComponent
+        }),
+        isExact: false
+    },{
+        path: "TreasureBoxRoom/:gold",
+        component: Loadable({
+            loader: () => import("~/container/TreasureBoxRoom/TreasureBoxRoom"),
+            loading: MyLoadingComponent
+        }),
+        isExact: false
+    },{
+        path: "TreasureList",
+        component: Loadable({
+            loader: () => import("~/container/TreasureBoxRoom/component/TreasureList"),
+            loading: MyLoadingComponent
+        }),
+        isExact: false
+    },{
+        path: "BoxRecord",
+        component: Loadable({
+            loader: () => import("~/container/TreasureBoxRoom/component/BoxRecord"),
+            loading: MyLoadingComponent
+        }),
+        isExact: false
     },
     {
         path: "PersonalInformation",
@@ -119,14 +155,14 @@ const routes = [
     //     }),
     //     isExact: false
     // },
-    {
-        path: "ChallengeMatch",
-        component: Loadable({
-            loader: () => import("~/container/Activity/component/ChallengeMatch"),
-            loading: MyLoadingComponent
-        }),
-        isExact: false
-    }
+    // {
+    //     path: "ChallengeMatch",
+    //     component: Loadable({
+    //         loader: () => import("~/container/Activity/component/ChallengeMatch"),
+    //         loading: MyLoadingComponent
+    //     }),
+    //     isExact: false
+    // }
     // {
     //     path: "PayPriceOver/:price/:id",
     //     component: Loadable({

@@ -53,7 +53,7 @@ class PayPage extends React.Component{
         if(this.state.id === "007"){
             Api.refundRequest().then(res => {
                 message.success(res.msg);
-                window.location.href = "#/Dashboard/index";
+                window.location.href = "#/Dashboard/TenSen";
             }).catch(res => {
                 message.warning(res.msg)
             })
@@ -105,7 +105,7 @@ class PayPage extends React.Component{
                         Api.buyVip({month,type:this.state.id}).then(res => {
                             message.success(res.msg)
                             let setT = setTimeout(()=>{
-                                window.location.href = "#/Dashboard/index";
+                                window.location.href = "#/Dashboard/TenSen";
                                 clearTimeout(setT)
                             },500)
                         }).catch(res => {

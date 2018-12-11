@@ -34,26 +34,26 @@ class Routes extends Component {
         }
         return (
             <div>
-                {/*<Router history={history}>*/}
-                    {/*<Switch>*/}
-                        {/*/!*<Route exact path="/" component={Dashboard}/>*!/*/}
+                <Router history={history}>
+                    <Switch>
+                        {/*<Route exact path="/" component={Dashboard}/>*/}
+                        <Route path="/Dashboard" component={Dashboard}/>
+                        {/*<Route exact path="/" component={Dashboard}/>*/}
                         {/*<Route path="/Dashboard" component={Dashboard}/>*/}
-                        {/*/!*<Route exact path="/" component={Dashboard}/>*!/*/}
-                        {/*/!*<Route path="/Dashboard" component={Dashboard}/>*!/*/}
-                        {/*<Redirect to="/Dashboard/index"/>*/}
-                    {/*</Switch>*/}
-                {/*</Router>*/}
-                {
-                    isPhone?<Router history={history}>
-                        <Switch>
-                            {/*<Route exact path="/" component={Dashboard}/>*/}
-                            <Route path="/Dashboard" component={Dashboard}/>
-                            {/*<Route exact path="/" component={Dashboard}/>*/}
+                        <Redirect to="/Dashboard/index"/>
+                    </Switch>
+                </Router>
+                {/*{*/}
+                    {/*isPhone?<Router history={history}>*/}
+                        {/*<Switch>*/}
+                            {/*/!*<Route exact path="/" component={Dashboard}/>*!/*/}
                             {/*<Route path="/Dashboard" component={Dashboard}/>*/}
-                            <Redirect to="/Dashboard/index"/>
-                        </Switch>
-                    </Router>: <img src={require("./layouts/image/my-to.png")} style={{width: "100vw",height: "100vh"}} alt="请在电脑上登录"/>
-                }
+                            {/*/!*<Route exact path="/" component={Dashboard}/>*!/*/}
+                            {/*/!*<Route path="/Dashboard" component={Dashboard}/>*!/*/}
+                            {/*<Redirect to="/Dashboard/index"/>*/}
+                        {/*</Switch>*/}
+                    {/*</Router>: <img src={require("./layouts/image/my-to.png")} style={{width: "100vw",height: "100vh"}} alt="请在电脑上登录"/>*/}
+                {/*}*/}
             </div>
         )
     }

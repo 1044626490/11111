@@ -98,7 +98,7 @@ class Shopping extends React.Component{
     //                 }
     //             }
     //         }
-    //         if (hash.indexOf("#/Dashboard/index") >= 0) {
+    //         if (hash.indexOf("#/Dashboard/TenSen") >= 0) {
     //             if(!this.props.userInfo.data){
     //                 this.props.dispatch(fetchPostsGetUser(params)).then((res) => {
     //                     this.setState({

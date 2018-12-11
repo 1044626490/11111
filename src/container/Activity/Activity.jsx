@@ -37,7 +37,7 @@ class Activity extends React.Component{
                     name:"坐以待币",
                     info:"12月3日至12月9日，每天20:00、20:15、20:30各一场红包雨。",
                     value:"参加活动",
-                    isActivity:true,
+                    isActivity:false,
                     type: 1,
                     callback:(item)=>{item.isActivity?window.location.href = "#/Dashboard/redPacket":null}
                 },
@@ -56,10 +56,10 @@ class Activity extends React.Component{
         }
     }
 
-    componentDidMount(){
+    componentWillMount(){
         this.getMyCoupon();
         let time = Date.parse(new Date());
-        let end =Date.parse(new Date("2018-12-09"));
+        let end = Date.parse(new Date("2018-12-09 20:30:10"));
         let data = this.state.data;
         if(Number(time) >= Number(end)){
             data[1].isActivity = false;

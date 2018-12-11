@@ -114,7 +114,7 @@ $(document).on("touchstart",".biger",(e)=>{
     packet += 30;
     // console.log(30)
     localStorage.setItem("packet",packet);
-    // Api.sysSendMessage({uid:this.state.uid,type:"抢得",name:"30金大红包"});
+     Api.sysSendMessage({uid:this.state.uid,type:"抢得",name:"30金大红包"});
     $(".num").text(packet);
     e.target.style.cssText = "display: none";
     let setT =setTimeout(()=>{
@@ -142,7 +142,7 @@ class redPacket extends React.Component{
     componentWillMount(){
         Api.getTime().then(res => {
             let timestamp1 = res.data*1000;
-            let end =Date.parse(new Date("2018-12-09 20:30:10"));
+            let end = Date.parse(new Date("2018-12-09 20:30:10"));
             if(Number(timestamp1) >= Number(end)){
                 this.setState({
                     isActivity:false,
@@ -352,7 +352,7 @@ class redPacket extends React.Component{
                         }else {
                             params.type = 3;
                         }
-                        // Api.redEnvelope(params);
+                         Api.redEnvelope(params);
                         clearInterval(setI)
                     }
                 },1000)
