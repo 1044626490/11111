@@ -1,3 +1,123 @@
 .box-record-wrap{
-
+  background-color: white;
+  height: 100vh;
+  overflow-y: hidden;
+  .header-wrap{
+    width: 100vw;
+    height: 50vw;
+    background-image: url("../../../layouts/image/index1/treasure/top2.png");
+    background-size: 100% 100%;
+    padding-top: 8vw;
+    position: relative;
+    p{
+      text-align: center;
+      a{
+        color: white;
+      }
+      margin-bottom: 2vw;
+    }
+    >span{
+      position: absolute;
+      left: 5vw;
+      top: 5vw;
+      font-size: 4vw;
+      color: white;
+    }
+    p:first-child{
+      font-size: 3.5vw;
+      color: white;
+    }
+    p:nth-child(2){
+      font-size: 14vw;
+      font-weight: 600;
+      color: #fef40f;
+      line-height: 15vw;
+      margin-bottom: 1vw;
+      >span{
+        margin-left: 2px;
+        font-size: 4vw;
+        font-weight: 500;
+      }
+    }
+  }
+  .list-content{
+    width: 90vw;
+    margin: 5vw;
+    >div:first-child{
+      p:first-child{
+        text-align: center;
+        font-size: 4vw;
+        position: relative;
+      }
+      p:first-child:before,p:first-child:after{
+        content: "";
+        width: 30vw;
+        border-top: 0.8px solid #e6e6e6;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      p:first-child:before{
+        left: 0;
+      }
+      p:first-child:after{
+        right: 0;
+      }
+      p:last-child{
+        color: #bcbcbc;
+      }
+    }
+  }
+  ul{
+    padding: 3vw 0 0;
+    //height: 65vh;
+    background-color: #f0f0f0;
+    list-style: none;
+    li{
+      height: 13vw;
+      margin-bottom: 3vw;
+      border-bottom: 1px solid #ececec;
+      >.ant-row{
+        height: 10vw;
+        margin-bottom: 3vw;
+        .ant-col-4{
+          height: 10vw;
+          line-height: 10vw;
+          text-align: center;
+        }
+        .ant-col-13{
+          height: 10vw;
+          >.ant-row{
+            height: 5vw;
+            line-height: 5vw;
+          }
+          >.ant-row:first-child{
+            span{
+              color: red;
+            }
+            span:before{
+              content: "";
+              display: inline-block;
+              margin: 0 1vw;
+              width: 3vw;
+              height: 3vw;
+              background-image: url("../../../layouts/image/index1/treasure/crown.png");
+              background-size: 100% 100%;
+            }
+          }
+          .ant-row:last-child{
+            color: #a2a2a2;
+          }
+        }
+        .ant-col-7{
+          text-align: center;
+          height: 10vw;
+          line-height: 10vw;
+        }
+      }
+    }
+    li:last-child{
+      border: none;
+    }
+  }
 }

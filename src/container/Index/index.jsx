@@ -606,7 +606,7 @@ class Index extends React.Component {
                                                             type={item.key === "password" || item.key === "newpassword" ? "password" : "text"}
                                                             className={item.key === "code" ? "kaptchald" : null}
                                                             onChange={(e) => this.changeInput(e, item, index, "register")}
-                                                            placeholder={item.placeholder}
+                                                            placeholder={index === 1?"设置新密码（长度不能低于6位）":item.placeholder}
                                                             id={item.isOk}/>
                                                             {
                                                                 item.key === "code" ?

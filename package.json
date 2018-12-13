@@ -111,7 +111,7 @@
   },
   "proxy": {
     "/*": {
-      "target": "http://api.times168.net",
+      "target": "http://47.99.198.85:80",
       "changeOrigin": true
     }
   },

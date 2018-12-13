@@ -76,6 +76,7 @@ export default {
     buyVip: (params) =>post(C.BUY_VIP, params),
     treasureJoinGroup: (params) =>post(C.TREASURE_JOIN_GROUP, params),
     treasureGrabBag: (params) =>post(C.TREASURE_GRAB_BAG, params),
+    userGold: (params) =>post(C.USER_GOLD, params),
 
     // logout: (params) => post(C.LOGOUT, params),
     // register: (params) => post(C.REGISTER, params),

@@ -18,7 +18,8 @@ const FormItem = Form.Item;
 class TenSen extends React.Component {
     constructor(props) {
         super(props);
-        this.webSocket = new WebSocket("ws://api.times168.net:8282");
+        this.webSocket = new WebSocket("ws://47.99.198.85:8282");
+        // this.webSocket = new WebSocket("ws://api.times168.net:8282");
         this.setI = null;
         this.setI3 = null;
         this.state = {

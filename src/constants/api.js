@@ -73,6 +73,7 @@ export const REFUNF_MONEY_NUM = '/refund_money_num';//退款
 export const BUY_VIP = '/buy_vip';//购买续费vip
 export const TREASURE_JOIN_GROUP = '/treasure/group/join_group';//加入宝箱房间
 export const TREASURE_GRAB_BAG = '/treasure/group/grab_bag';//加入宝箱房间
+export const USER_GOLD = '/index/user/user_gold';//加入宝箱房间
 
 // export const GET_LOGIN_CAPTCHA = '/api/login/captcha';
 // export const LOGIN = '/api/login';//登录
@@ -144,4 +145,5 @@ export const TREASURE_GRAB_BAG = '/treasure/group/grab_bag';//加入宝箱房间
 // export const BUY_VIP = '/api/buy_vip';//购买续费vip
 // export const TREASURE_JOIN_GROUP = '/api/treasure/group/join_group';//加入宝箱房间
 // export const TREASURE_GRAB_BAG = '/api/treasure/group/grab_bag';//加入宝箱房间
+// export const USER_GOLD = '/index/user/user_gold';//加入宝箱房间
 

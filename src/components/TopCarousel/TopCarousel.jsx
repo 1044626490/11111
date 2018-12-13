@@ -9,7 +9,8 @@ class TopCarousel extends React.Component{
         if(this.props.userInfo&&this.props.userInfo.code === "0000"){
             let hash = window.location.hash;
             if(hash.indexOf("#/Dashboard/Activity") >= 0 || hash.indexOf("#/Dashboard/redPacket") >= 0){
-                this.webS = new WebSocket("ws://api.times168.net:8282");
+                this.webS = new WebSocket("ws://47.99.198.85:8282");
+                // this.webS = new WebSocket("ws://api.times168.net:8282");
             }
         }
         this.state = {

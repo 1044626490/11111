@@ -2,15 +2,27 @@ import React from "react"
 import {message} from "antd";
 import connect from "react-redux/es/connect/connect";
 import "./Header.less"
+import Api from '~/until/api';
 
 class Header extends React.Component{
     constructor(props) {
         super(props);
+        this.state = {
+            myGold:0
+        }
+    }
 
+    componentDidMount(){
+        Api.userGold().then(res => {
+            this.setState({
+                myGold:res.gold
+            })
+        })
     }
 
     render(){
         const userInfo = this.props.userInfo.data;
+        const gold = this.state.myGold
         return(
             <div className="treasure-box-header">
                 <span className="header-top"></span>
@@ -24,7 +36,7 @@ class Header extends React.Component{
                     <span>ID:{userInfo?userInfo.uid:0}</span>
                 </div>
                 <div className="my-money-item">
-                    <span>{userInfo?Number(userInfo.gold) >= 10000?(Number(userInfo.gold)/10000).toFixed(1)+"w":userInfo.gold:0}</span>
+                    <span>{userInfo?Number(gold) >= 10000?(Number(gold)/10000).toFixed(1)+"w":gold:0}</span>
                     <span className="my-money-item-pay" onClick={()=>{{if(this.props.userInfo&&this.props.userInfo.code === "0000"){
                         window.location.href = "#/Dashboard/Shopping/1"
                     }else {

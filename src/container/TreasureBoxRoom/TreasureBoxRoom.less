@@ -1,23 +1,473 @@
-.treasure-box-room-content{
+.treasure-box-no{
+  width: 85vw;
+  margin: 0 auto;
+  border-radius: 3vw;
+  height: 70vw;
+  overflow-y: visible!important;
   position: fixed;
-  top: 0;
-  height: 100vh;
-  width: 100vw;
-  padding: 25vw 0 23vw;
-  ul{
-    list-style: none;
-    padding: 0;
-    .ant-col-4{
-      >.ant-row{
-        padding-left: 3vw;
-        white-space: nowrap;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  text-align: center;
+  .ant-modal{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 85vw;
+    margin: 0;
+    border-radius: 3vw;
+    height: 70vw;
+    overflow-y: visible;
+    >div{
+      border-radius: 3vw;
+    }
+  }
+  .ant-modal-content{
+    height: 70vw;
+    overflow-y: visible;
+    border-radius: 3vw;
+  }
+  .ant-modal-body{
+    width: 85vw;
+    background-color: #1cb4f8;
+    border-radius: 3vw;
+    height: 70vw;
+    overflow-y: visible;
+    .treasure-rule-header{
+      margin: 0 auto;
+      width: 100%;
+      text-align: center;
+      position: relative;
+      span{
+        font-size: 5vw;
+        color: white;
+        font-weight: 500;
       }
-      >.ant-row:last-child{
-        width: 20vw;
-        height: 20vw;
+      span:before{
+        content: "";
+        display: inline-block;
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 22vw;
+        border-top: 0.5px solid rgba(255,255,255,.3);
+      }
+      span:after{
+        content: "";
+        display: inline-block;
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 22vw;
+        border-top: 0.5px solid rgba(255,255,255,.3);
+      }
+    }
+    .has-no-money{
+      height: 30vw;
+      overflow: hidden auto;
+      width: 100%;
+      padding: 5vw 3vw;
+      margin: 5vw auto 0;
+      border-radius: 2vw;
+      background-color: #e8f8fe;
+      box-shadow: 1px 1px 2px 1px #ccc inset;
+      text-align: left;
+      color: #1cb4f8;
+    }
+    button{
+      margin-top: 5vw;
+      width: 26.7vw;
+      height: 10vw;
+      color: white!important;
+      border: none!important;
+      //margin-left: 5vw;
+      //transform: translateX(-50%);
+      background-image: url("../../layouts/image/index1/treasure/rule.png");
+      background-color: transparent!important;
+      background-size: 100% 100%;
+      margin-right: 10vw;
+    }
+    button:first-child{
+      //float: left;
+    }
+    button:last-child{
+      margin-right: 0;
+      background-image: url("../../layouts/image/index1/treasure/charge.png");
+      //float: right;
+    }
+  }
+  .ant-modal-footer{
+    display: none;
+  }
+}
+.treasure-box-room-wrap {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  .treasure-box-header{
+    position: relative;
+    padding-top: 1.5vh;
+    padding-left: 3vh;
+    .header-top{
+      display: inline-block;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 22.67vw;
+      background-size: 100% 100%;
+      //z-index: 99;
+      background-image: url("../../layouts/image/index1/treasure/top1.png");
+    }
+    >img{
+      float: left;
+      border-radius: 50%;
+      width: 13.3vw;
+      height: 13.3vw;
+      border:1px solid #fff;
+      margin: 0 2vw 0 0;
+      position: relative;
+      z-index: 10;
+    }
+    .my-info{
+      color:#fff;
+      height: 13.3vw;
+      span{
+        font-size: 3vw;
+        display: inline-block;
+        height: 30%;
+        vertical-align: center;
+        position: relative;
+        top: 1vw;
+      }
+      .my-vip{
         img{
+          width: 5vw;
+          height: 4.21vw;
+          position: relative;
+          left: 1vw;
+          top: -0.5vw;
+        }
+      }
+    }
+    .my-money-item{
+      position: absolute;
+      text-align: right;
+      top:2.5vh;
+      display: block;
+      margin-right: 2vw;
+      //width: 30vw;
+      padding: 0 6vw 0 8vw!important;
+      height: 5vw;
+      line-height: 5vw;
+      color: #fff;
+      //padding-right: 5vw;
+      background-color: rgba(0,0,0,.2);
+      //border:1px solid rgb(104,70,159);
+      border-radius: 3vw;
+      span:not(.my-trophy):before{
+        content: "";
+        display: inline-block;
+        width: 4.3vw;
+        height: 4.6vw;
+        background-size: 100%;
+        background-repeat: no-repeat;
+        background-position: center;
+        position: absolute;
+        top:40%;
+        transform: translateY(-50%);
+      }
+      span:not(.my-trophy) {
+        font-size: 3vw;
+        display: inline-block;
+        height: 5vw;
+        line-height: 5vw;
+        float: right;
+        margin-right: -0.5vw;
+      }
+      //span:not(.my-trophy){
+      //  font-size: 3vw;
+      //}
+      .my-money-item-pay{
+        content: "";
+        display: inline-block;
+        width: 5vw;
+        height: 5vw!important;
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        background-position: center;
+        position: absolute;
+        top:45%;
+        transform: translateY(-50%);
+        background-image: url("../../layouts/image/more_gold.png");
+        right: -0.5vw;
+      }
+      .my-money-item-pay:before{
+        display: none!important;
+      }
+    }
+    .my-money-item{
+      right: 4vw;
+      span:not(.my-trophy):before{
+        width: 5.5vw;
+        height: 6.3vw;
+        margin-top: 0.3vw;
+        background-image: url("../../layouts/image/gold.png");
+        left: -0.5vw;
+      }
+    }
+    .my-sliver-item{
+      right: 25vw;
+      span:not(.my-trophy):before{
+        width: 5.8vw;
+        height: 6.5vw;
+        background-image: url("../../layouts/image/silver.png");
+        left: -0.5vw;
+      }
+    }
+    .my-trophy{
+      display: block;
+      width: 9vw;
+      height: 9vw;
+      position: absolute;
+      bottom: -13vw;
+      right: -0.5vw;
+      background-image: url("../../layouts/image/trophy.png");
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+    .my-task{
+      display: block;
+      width: 9vw;
+      height: 9vw;
+      position: absolute;
+      bottom: -13vw;
+      right: 10vw;
+      background-image: url("../../layouts/image/1 (6).png");
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+      background-position: center;
+      z-index: 11;
+    }
+    .has-task:after{
+      content: "";
+      display: inline-block;
+      width: 10vw;
+      height: 10vw;
+      position: absolute;
+      background-image: url("../../layouts/image/message/ss/dontai.png");
+      background-size: 100% 100%;
+      left: -10%;
+      top: -10%;
+      z-index: 10;
+      animation: roa 1s infinite;
+      animation-timing-function: linear;
+    }
+    @keyframes roa{
+      0%{
+        transform: rotate(0deg);
+        opacity: 1;
+      }
+      //25%{
+      //  opacity: 0;
+      //}
+      50%{
+        transform: rotate(180deg);
+        opacity: 0.3;
+      }
+      //75%{
+      //  opacity: 0;
+      //}
+      100%{
+        opacity: 1;
+        transform: rotate(360deg);
+      }
+    }
+    //.relief-payment{
+    //  display: block;
+    //  width: 9vw;
+    //  height: 9vw;
+    //  position: absolute;
+    //  bottom: -13vw;
+    //  right: 20vw;
+    //  background-image: url("../../layouts/image/1 (5).png");
+    //  background-size: 100% 100%;
+    //  background-repeat: no-repeat;
+    //  background-position: center;
+    //}
+    .sign-in{
+      display: block;
+      width: 9vw;
+      height: 9vw;
+      position: absolute;
+      bottom: -13vw;
+      right: 20vw;
+      //bottom: -13vw;
+      //right: 31vw;
+      background-image: url("../../layouts/image/sign.png");
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+    .has-sign{
+      background-image: url("../../layouts/image/sign.png");
+      z-index: 11;
+    }
+    .not-sign:after{
+      content: "";
+      display: inline-block;
+      width: 10vw;
+      height: 10vw;
+      position: absolute;
+      background-image: url("../../layouts/image/message/ss/dontai.png");
+      background-size: 100% 100%;
+      left: -10%;
+      top: -10%;
+      z-index: 10;
+      animation: roa 1s infinite;
+      animation-timing-function: linear;
+    }
+    .my-trophy:after{
+
+    }
+  }
+  .box-mask {
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(255, 255, 255, .5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    .open-box {
+      width: 40vw;
+      height: 44vw;
+      position: fixed;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      .open-box-img{
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+      }
+      .open-box-imgs{
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+        width: 0;
+        height: 0;
+      }
+    }
+    @keyframes rot{
+      0%{
+        transform: rotate(0deg);
+      }
+      25%{
+        transform: rotate(10deg);
+      }
+      50%{
+        transform: rotate(0deg);
+      }
+      75%{
+        transform: rotate(-10deg);
+      }
+      100%{
+        transform: rotate(0deg);
+      }
+    }
+  }
+  .treasure-box-room-content {
+    position: fixed;
+    top: 0;
+    height: 70vh;
+    width: 100vw;
+    margin: 25vw 0 23vw;
+    overflow-y: auto;
+    ul {
+      //max-height: 52vh;
+      //overflow: hidden auto;
+      padding: 0 5vw;
+      list-style: none;
+      font-size: 3vw;
+      li{
+        margin-bottom: 5vw;
+        color: #777;
+      }
+      .get-gold{
+        text-align: center;
+        i{
+          color: #777;
+          display: inline-block;
+          background-color: rgba(0,0,0,0.1);
+          border-radius: 2.5vw;
+          font-style: normal;
+          font-size: 3.5vw;
+          padding: 0 2vw;
+          line-height: 4.5vw;
+          height: 5vw;
+          span{
+            color: #579cff;
+          }
+        }
+      }
+      .get-result{
+        font-size: 3.5vw;
+        color: #777;
+        text-align: center;
+        span:first-child{
+          display: inline-block;
+          padding: 2.5vw 3vw;
+          background-color: rgba(0,0,0,.1);
+          border-radius: 2vw;
+          height: 17vw;
+          i{
+            //text-align: left;
+            //display: inline-block;
+            font-style: normal;
+            line-height: 4vw;
+            height: 4vw;
+            display: block;
+          }
+          i:first-child{
+            color: #ff3b35;
+          }
+          i:last-child{
+            //text-align: center;
+            a{
+              color: #579cff;
+            }
+          }
+        }
+        span:last-child{
+          padding: 0 3vw;
+          border-radius: 2.5vw;
+          margin-top: 5vw;
+          display: inline-block;
+          background-color: rgba(0,0,0,.1);
+          line-height: 5vw;
+          height: 5vw;
+          color: #ff3b35;
+        }
+      }
+      .ant-col-4 {
+        > .ant-row {
+          padding-left: 3vw;
+          white-space: nowrap;
+        }
+        > .ant-row:last-child {
           width: 20vw;
           height: 20vw;
+          img {
+            width: 20vw;
+            height: 20vw;
+          }
         }
       }
     }
