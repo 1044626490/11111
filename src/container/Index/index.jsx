@@ -121,7 +121,8 @@ class Index extends React.Component {
             tabsValue:"2",
             isTalking:false,
             isHasTask:false,
-            isFirst:false
+            isFirst:false,
+            splash:this.props.userInfo.code
         };
     }
 
@@ -447,8 +448,14 @@ class Index extends React.Component {
             }
         ];
         const userInfo = this.props.userInfo.data;
+        // alert(this.props.userInfo)
         return(
             <div className="index-container">
+                {
+                    this.state.splash?null:<div className="splash-screen" onClick={()=>{this.setState({splash:true})}}>
+                        <img className="click2" src={require("../../layouts/image/index1/images/click2.png")} alt=""/>
+                    </div>
+                }
                 {/*<HeaderNav name="挑战10秒"/>*/}
                 {
                     this.state.isOpenMask?<div className="mask"></div>:null
@@ -491,7 +498,7 @@ class Index extends React.Component {
                     {
                         data.map((item ,index ) => {
                             let num = 0;
-                            if(index === 0){
+                            if(index === 0||index === 1){
                                 num = (Math.random()*100).toFixed(0);
                             }
                             return <div key={index} className="index-content-item"

@@ -1,6 +1,7 @@
 import React from "react"
 import "./TreasureList.less"
 import { Tabs, Row, Col, Avatar } from 'antd';
+import Api from '~/until/api';
 
 const TabPane = Tabs.TabPane;
 class TreasureList extends React.Component{
@@ -80,6 +81,14 @@ class TreasureList extends React.Component{
         }
     }
 
+    componentDidMount(){
+        Api.todayGrabbedRecord().then(res => {
+            this.setState({
+                myBoxList:res.data
+            })
+        })
+    }
+
     render(){
         const myBoxList = this.state.myBoxList
         return(
@@ -93,15 +102,15 @@ class TreasureList extends React.Component{
                             <p className="list-info">共抢到{myBoxList.totalGet}个宝箱，共{myBoxList.totalGetGold}金币</p>
                             <ul>
                                 {
-                                    myBoxList.IGot.map((item, index) => {
-                                        return <li>
+                                    myBoxList.IGot.length > 0&&myBoxList.IGot.map((item, index) => {
+                                        return <li key={index}>
                                             <Row>
                                                 <Col span={4}>
                                                     <Avatar icon="user" src={item.avatar||""}/>
                                                 </Col>
                                                 <Col span={13}>
-                                                    <Row>{item.name}</Row>
-                                                    <Row>{item.time}</Row>
+                                                    <Row>{item.username}</Row>
+                                                    <Row>{item.get_time}</Row>
                                                 </Col>
                                                 <Col span={7}>
                                                     <Row>{item.gold}金币</Row>
@@ -116,16 +125,15 @@ class TreasureList extends React.Component{
                             <p className="list-info">共发出{myBoxList.totalPut}个宝箱，共{myBoxList.totalPutGold}金币</p>
                             <ul className="list-item">
                                 {
-                                    myBoxList.IPut.map((item, index) => {
-                                        return <li>
+                                    myBoxList.IPut.length > 0&&myBoxList.IPut.map((item, index) => {
+                                        return <li key={index}>
                                             <Row>
                                                 <Col span={4}>
-                                                    <Avatar icon="user" src={this.props.userInfo?this.props.userInfo.data.avatar:
-                                                        require("../../../layouts/image/head.png")}/>
+                                                    <Avatar icon="user" src={item.avatar}/>
                                                 </Col>
                                                 <Col span={13}>
-                                                    <Row>{this.props.userInfo?this.props.userInfo.data.name:""}</Row>
-                                                    <Row>{item.time}</Row>
+                                                    <Row>{item.username}</Row>
+                                                    <Row>{item.get_time}</Row>
                                                 </Col>
                                                 <Col span={7}>
                                                     <Row>{item.gold}金币</Row>

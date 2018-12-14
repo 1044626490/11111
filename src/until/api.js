@@ -77,6 +77,8 @@ export default {
     treasureJoinGroup: (params) =>post(C.TREASURE_JOIN_GROUP, params),
     treasureGrabBag: (params) =>post(C.TREASURE_GRAB_BAG, params),
     userGold: (params) =>post(C.USER_GOLD, params),
+    packageRecord: (params) =>post(C.PACKAGE_RECORD, params),
+    todayGrabbedRecord: (params) =>post(C.TODAY_GRABBED_RECORD, params),
 
     // logout: (params) => post(C.LOGOUT, params),
     // register: (params) => post(C.REGISTER, params),

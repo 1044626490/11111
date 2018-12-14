@@ -10,9 +10,10 @@ import $ from "jquery"
 class TreasureBoxRoom extends React.Component{
     constructor(props) {
         super(props);
-        this.webSocket = new WebSocket("ws://47.99.198.85:8282");
+        this.webSocket = new WebSocket("ws://api.times168.net:8282");
         this.setT = null;
         this.setTs = null;
+        this.setT1 = null;
         this.state = {
             roomGold:this.props.match.params.gold,//房间金币
             gameInfo:[
@@ -100,10 +101,6 @@ class TreasureBoxRoom extends React.Component{
         let level = gold === "100"?1:gold === "500"? 2:gold === "1000"?3:gold === "5000"?4:gold === "10000"?5:1;
         Api.treasureJoinGroup({level}).then(res => {
             this.getWebSocket(res.data);
-            this.setI3 = setInterval(()=>{
-                let data = JSON.stringify({"type":"ping"});
-                this.webSocket.send(data)
-            },9000)
         })
     }
 
@@ -116,14 +113,39 @@ class TreasureBoxRoom extends React.Component{
             let userData = data.data;
             let type = data.type || "";
             switch (type) {
+                case "bind":
+
+                    break
                 case "ping":
                     break;
                 case "package":
-                    let data = this.state.gameInfo;
-                    data.push(userData);
-                    this.setState({
-                        gameInfo:data
-                    });
+                    if(this.state.gameInfo.length === 0){
+                        clearInterval(this.setI3);
+                        this.setI3 = setInterval(()=>{
+                            let data = JSON.stringify({"type":"ping"});
+                            this.webSocket.send(data)
+                        },9000)
+                    }
+                    if(userData.type === 3){
+                        this.getMyGold()
+                    }
+                    // alert(userData.type);
+                    if($(".open-box").is(":animated")){
+                        this.setT1 = setTimeout(()=>{
+                            let data = this.state.gameInfo;
+                            data.push(userData);
+                            this.setState({
+                                gameInfo:data
+                            });
+                            clearTimeout(this.setT1)
+                        },2200)
+                    }else {
+                        let data = this.state.gameInfo;
+                        data.push(userData);
+                        this.setState({
+                            gameInfo:data
+                        });
+                    }
                     // let roomInfo = localStorage.getItem("room_info")?localStorage.getItem("room_info"):"";
                     // let arr = roomInfo.split(";");
                     // if(arr[arr.length-1].type === userData.type&&arr[arr.length-1].username === userData.username){
@@ -147,6 +169,7 @@ class TreasureBoxRoom extends React.Component{
     };
 
     componentWillUnmount(){
+        this.webSocket.close();
         clearInterval(this.setI3);
         clearTimeout(this.setTs);
         clearTimeout(this.setT);
@@ -163,6 +186,8 @@ class TreasureBoxRoom extends React.Component{
     openBoxAnimate(res){
         if(res.code === 50003){
             $(".open-box-imgs").prop("src",require("../../layouts/image/index1/treasure/none.png"))
+        }else if(res.code === "0000"){
+            $(".open-box-imgs").prop("src",require("../../layouts/image/index1/treasure/open.png"))
         }
         $(".box-mask").css({
             display: "block",
@@ -219,7 +244,11 @@ class TreasureBoxRoom extends React.Component{
 
     render(){
         const userInfo = this.props.userInfo.data;
-        const gold = this.state.myGold
+        const gold = this.state.myGold;
+        // alert(this.state.gameInfo.length);
+        // for(let i=0;i<this.state.gameInfo.length;i++){
+        //     alert(this.state.gameInfo[i].type)
+        // }
         return(
             <div className="treasure-box-room-wrap">
                 <div className="treasure-box-header">
@@ -272,14 +301,14 @@ class TreasureBoxRoom extends React.Component{
                                     </li>
                                 }else if(item.type === 2){
                                     return <li className="get-gold" key={index}>
-                                        <i><span>{item.username}</span>&nbsp;领取了&nbsp;<span>{item.recipient}</span>&nbsp;派发的宝箱</i>
+                                        <i><span>{item.username}</span>&nbsp;领取了&nbsp;<span>{item.recipient}</span>&nbsp;派发的宝箱{item.uid === this.props.userInfo.data.uid?<span>({item.gold}金币)</span>:""}</i>
                                     </li>
                                 }else if(item.type === 3){
                                     return <li className="get-result" key={index}>
                                         <span>
                                             <i>手气最佳:&nbsp;&nbsp;{item.max_username}&nbsp;({item.max_gold}金币)</i>
                                             <i>手气最差:&nbsp;&nbsp;{item.min_username}&nbsp;({item.min_gold}金币)</i>
-                                            <i><a href={"#/Dashboard/BoxRecord/"+item.package_id}>查看领取结果 ></a></i>
+                                            <i><a href={"#/Dashboard/BoxRecord/"+item.package_id+"/"+this.state.roomGold}>查看领取结果 ></a></i>
                                         </span>
                                         <span>3秒后发出下一个宝箱，准备开抢</span>
                                         {/*<i><span>{item.username}</span>领取了<span>{item.recipient}</span>派发的宝箱</i>*/}

@@ -30,7 +30,7 @@ class ActivityRoom extends React.Component{
     constructor(props) {
         super(props);
         // this.ws = new WebSocket("ws://api.times168.net:8282");
-        this.ws = new WebSocket("ws://47.99.198.85:8282");
+        this.ws = new WebSocket("ws://api.times168.net:8282");
         this.setI = null;
         this.setI1 = null;
         this.setI2 = null;

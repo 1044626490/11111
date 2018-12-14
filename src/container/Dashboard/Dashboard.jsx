@@ -52,7 +52,7 @@ const routes = [
         }),
         isExact: false
     },{
-        path: "BoxRecord",
+        path: "BoxRecord/:id/:gold",
         component: Loadable({
             loader: () => import("~/container/TreasureBoxRoom/component/BoxRecord"),
             loading: MyLoadingComponent
@@ -192,8 +192,10 @@ class Dashboard extends React.Component {
     componentWillMount(){
         if(!window.location.hash.indexOf("time") >= 0&&window.location.hash.indexOf("uid=") === -1&&window.location.hash.indexOf("index") === -1&&window.location.hash.indexOf("oid") === -1){
             if(window.location.href.indexOf("?") >= 0){
-                let timess =Date.parse(new Date());
-                window.location.href = window.location.href.concat("&time="+timess)
+                if(window.location.hash.indexOf("time=") === -1){
+                    let timess =Date.parse(new Date());
+                    window.location.href = window.location.href.concat("&time="+timess)
+                }
             }else {
                 let timess =Date.parse(new Date());
                 window.location.href = window.location.href.concat("?time="+timess)
@@ -255,12 +257,7 @@ class Dashboard extends React.Component {
         );
         return (
             <div className="container">
-                {/*<div className="splash-screen">*/}
-                    {/*<div className="progressbar" data-perc="100">*/}
-                        {/*<div className="bar"><span></span></div>*/}
-                        {/*<div className="label"><span></span></div>*/}
-                    {/*</div>*/}
-                {/*</div>*/}
+
                 <div>
                     {routes.map((route, i) => (
                         <RouteWithSubRoutes key={i} {...route} />

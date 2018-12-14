@@ -43,7 +43,7 @@
 .splash-screen{
   width: 100vw;
   height: 100vh;
-  background-image: url("../../layouts/image/checkHome/splash.jpg");
+  background-image: url("../../layouts/image/index1/images/splash.jpg");
   background-size: 100% 100%;
   position: fixed;
   top: 0;
@@ -53,6 +53,28 @@
   //animation-delay: 1s!important;
   //animation-timing-function: linear;
   //animation: splash 1s;
+  .click1,.click2{
+    width: 50.7vw;
+    height: 8vw;
+    position: absolute;
+    bottom: 6vh;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .click2{
+    animation: opacity-img 1s infinite linear;
+  }
+  @keyframes opacity-img{
+    0%{
+      opacity: 1;
+    }
+    50%{
+      opacity: 0.8;
+    }
+    100%{
+      opacity: 1;
+    }
+  }
 }
 .head-wrap{
   position: relative;
