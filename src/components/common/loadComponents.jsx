@@ -12,7 +12,7 @@ const MyLoadingComponent = ({isLoading, error}) => {
         return <Spin tip="Loading..."></Spin>;
     }
     else if (error) {
-        return <div>Sorry, the server has reset.please close the app and start the app again</div>;
+        return <div>抱歉，服务器出错，请点击<a href={()=>{window.location.href = "#/Dashboard/index"}}>返回</a>回到主页面，或者重启app</div>;
     }
     else {
         return null;

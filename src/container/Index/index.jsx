@@ -408,7 +408,7 @@ class Index extends React.Component {
         }
     }
 
-    back(){
+    menu(){
         if(!this.state.isFirst) {
             this.setState({
                 isFirst: true
@@ -425,8 +425,10 @@ class Index extends React.Component {
             if (ua.match(/MicroMessenger/i) == "micromessenger") {
                 jsSdkConfig();
             }else {
-                window.location.href="about:blank";
-                window.close();
+                Api.loginOut().then(res => {
+                    window.location.href = "#"
+                });
+                this.props.dispatch(fetchPostsGetUser())
             }
         }
     }
@@ -519,14 +521,24 @@ class Index extends React.Component {
                     }
                     <div  className="index-content-item">
                         <img src={require("../../layouts/image/index1/build.png")} alt=""/>
-                        <span>拼命搭建中...</span>
+                        <span>玩命搭建中...</span>
                         {/*<span>{item.name}</span>*/}
                         {/*<i>0人在玩</i>*/}
                     </div>
                 </div>
                 <div className="buttom-index">
-                    <Button onClick={()=>this.back()}>退出</Button>
-                    <Button onClick={()=>{if(this.props.userInfo&&this.props.userInfo.code === "0000"){
+                    <img className="buttom-index-img" src={require("../../layouts/image/index1/bottom2.png")} alt=""/>
+                    <div
+                        onTouchStart={()=>{$(".buttom-index-img").prop("src",require("../../layouts/image/index1/bottom1.png"))}}
+                        onTouchEnd={()=>{$(".buttom-index-img").prop("src",require("../../layouts/image/index1/bottom2.png"));
+                            window.location.href = "#/Dashboard/Shopping/1"
+                        }
+                        }
+                        className="shopping">
+                        商城
+                    </div>
+                    <Button className="menu" onClick={()=>{window.location.href = "#/Dashboard/index"}}>大厅</Button>
+                    <Button className="setting" onClick={()=>{if(this.props.userInfo&&this.props.userInfo.code === "0000"){
                         this.setState({
                             isOpenInfoModel:true
                         })

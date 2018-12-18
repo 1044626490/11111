@@ -80,7 +80,7 @@ class InfoModal extends React.Component{
         return(
             <div className="my-info-modal-wrap">
                 <Modal entered={true} visible={this.props.isOpenModel} wrapClassName={"index-my-info-modal reset-my-infos"}
-                       maskStyle={{color: "rgba(0,0,0,0.3)"}}
+                       maskStyle={{backgroundColor: "rgba(255,255,255,0.8)"}}
                        closable={false} destroyOnClose={true}>
                     <p className="reset-my-info-container">设置
                         <Icon type="close" theme="outlined" onClick={()=>this.getUserInfo()}
@@ -102,7 +102,7 @@ class InfoModal extends React.Component{
                             <span>签名：</span><Input onChange={(e)=>this.resetMyInfo(e,"signature")} defaultValue={info?info.signature:""}/>
                         </div>
                         <div className="bind-item">
-                            <span>账号：</span><Input onChange={(e)=>this.resetMyInfo(e,"alipay")} placeholder="此处填写支付宝提现账号" defaultValue={info?info.alipay:""}/>
+                            <span>账号：</span><Input onChange={(e)=>this.resetMyInfo(e,"alipay")} placeholder="此处填写支付宝账号" defaultValue={info?info.alipay:""}/>
                         </div>
                         <Button onClick={()=>this.saveInfo()} className="save-reset"></Button>
                     </div>

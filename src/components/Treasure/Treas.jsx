@@ -12,7 +12,7 @@ class Treas extends React.Component{
     render(){
         const userInfo = this.props.userInfo.data;
         return(
-            <div className="treasure-box-header">
+            <div className="treasure-box-headers">
                 <span className="header-top"></span>
                 <img onClick={()=>this.props.openInfoModal()} src={userInfo?userInfo.avatar:require("../../layouts/image/head.png")} alt=""/>
                 <div className="my-info">

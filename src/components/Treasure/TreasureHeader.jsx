@@ -20,7 +20,7 @@ class TreasureHeader extends React.Component{
         return(
             <div className="treasure-bottom-wrap">
                 <Button onClick={()=>this.back()}>返回</Button>
-                <Button onClick={()=>this.props.openRule()}>规则</Button>
+                <Button onClick={()=>this.props.musicSet()}>设置</Button>
             </div>
         )
     }

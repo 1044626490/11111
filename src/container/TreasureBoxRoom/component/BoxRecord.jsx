@@ -50,7 +50,7 @@ class BoxRecord extends React.Component{
         }
     }
 
-    componentWillMount(){
+    componentDidMount(){
         Api.packageRecord({package_id:this.state.packageId}).then(res => {
             for(let i=0;i<res.data.package_record.length;i++){
                 if(res.data.package_record[i].uid === this.props.userInfo.data.uid){
@@ -73,17 +73,17 @@ class BoxRecord extends React.Component{
                     <p>您共抢到</p>
                     <p>{this.state.myGold}<span>金币</span></p>
                     <p><a href="#/Dashboard/TreasureList">点击查看个人纪录</a></p>
-                    <span onClick={()=>{window.history.go(-1)}}>关闭</span>
+                    <span onClick={()=>{window.location.href = "#/Dashboard/TreasureBoxRoom/"+this.props.match.params.gold}}>关闭</span>
                 </div>
                 <div className="list-content">
                     <div>
                         <p>宝箱明细</p>
-                        <p>已领取5/5人，共{this.state.gold}金币</p>
+                        <p>已领取5/5人，共{Number(this.state.gold?this.state.gold:this.props.match.params.gold)*0.9}金币</p>
                     </div>
                     <ul>
                         {
                             this.state.boxRecord.map((item, index) => {
-                                return <li>
+                                return <li key={index}>
                                     <Row>
                                         <Col span={4}>
                                             <Avatar icon="user" src={item.avatar||""}/>

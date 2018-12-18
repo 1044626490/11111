@@ -6,6 +6,8 @@ import {Avatar, Row, Col, message, Button, Modal} from "antd"
 import "./TreasureBoxRoom.less"
 import Api from '~/until/api';
 import $ from "jquery"
+import TreasureInfoModal from "../Index/TreasureBox/TreasureInfoModal";
+import {fetchPostsGetUser} from '~/action/getUserInfo';
 
 class TreasureBoxRoom extends React.Component{
     constructor(props) {
@@ -14,79 +16,26 @@ class TreasureBoxRoom extends React.Component{
         this.setT = null;
         this.setTs = null;
         this.setT1 = null;
+        this.setMusic = null;
         this.state = {
             roomGold:this.props.match.params.gold,//房间金币
-            gameInfo:[
-                // {
-                //     type: 1,
-                //     username: "娇媚的小坏蛋",
-                //     package_id: 1
-                // },
-                // {
-                //     type: 2,
-                //     username: "ssss4",
-                //     recipient: "娇媚的小坏蛋"
-                // },
-                // {
-                //     type: 2,
-                //     username: "ssss3",
-                //     recipient: "娇媚的小坏蛋"
-                // },
-                // {
-                //     type: 2,
-                //     username: "sss2",
-                //     recipient: "娇媚的小坏蛋"
-                // },
-                // {
-                //     type: 2,
-                //     username: "ssss1",
-                //     recipient: "娇媚的小坏蛋"
-                // },
-                // {
-                //     type: 2,
-                //     username: "娇媚的小坏蛋ss",
-                //     recipient: "娇媚的小坏蛋"
-                // },
-                // {
-                //     type: 3,
-                //     max_username: "娇媚的小坏蛋ss",
-                //     max_gold: "32",
-                //     min_username: "ssss1",
-                //     min_gold: "10",
-                //     package_id: 1
-                // },
-                // {
-                //     type: 1,
-                //     username: "娇媚的小坏蛋ss",
-                //     package_id: 2
-                // },
-            ],
+            isMedia:1,
+            musicRed:"red",
+            gameInfo:[],
             myGold:0,
-            noMoney:false
+            noMoney:false,
+            mySetting:{},
+            openSetting:false
         }
     }
 
-    componentWillMount(){
-        // localStorage.removeItem("room_info")
-        // debugger
-        // let str = localStorage.getItem("room_info");
-        // if(str&&str.length){
-        //     if(str.indexOf(";") >= 0){
-        //         let gameInfo = str.split(";");
-        //         for(let i=0;i< gameInfo.length;i++){
-        //             let json = gameInfo[i];
-        //             gameInfo[i] = JSON.parse(gameInfo[i])
-        //         }
-        //         this.setState({
-        //             gameInfo
-        //         })
-        //     }
-        // }
+    componentDidMount(){
         if(!this.props.userInfo||this.props.userInfo.code !== "0000"){
             window.location.href = "#/Dashboard/index"
         }
         this.getRoom();
-        this.getMyGold();
+        this.getMySetting();
+        this.getUserInfo();
         let TreasureBox = document.querySelector('.treasure-box-room-content');
         TreasureBox!== null?TreasureBox.scrollTop = TreasureBox.scrollHeight:null;
     }
@@ -96,83 +45,55 @@ class TreasureBoxRoom extends React.Component{
         TreasureBox!== null?TreasureBox.scrollTop = TreasureBox.scrollHeight:null;
     }
 
+    getUserInfo = () =>{
+        this.props.dispatch(fetchPostsGetUser()).then((res) => {
+
+        }).catch((err) => {
+            message.error(err.msg)
+        })
+    };
+
     getRoom(){
+        this.getMyGold();
         let gold = this.props.match.params.gold;
         let level = gold === "100"?1:gold === "500"? 2:gold === "1000"?3:gold === "5000"?4:gold === "10000"?5:1;
-        Api.treasureJoinGroup({level}).then(res => {
-            this.getWebSocket(res.data);
-        })
-    }
-
-    //连接websocket
-    getWebSocket = (homeId) => {
-        let data = JSON.stringify({"type":"treasure_bind","uid":this.props.userInfo.data.uid,"group_id":homeId});
-        this.webSocket.send(data)
+        this.webSocket.onopen = () => {
+            this.webSocket.send(JSON.stringify({"type":"treasure_bind","uid":10655||this.props.userInfo.data.uid,"group_id":level}));
+            this.setI3 = setInterval(()=>{
+                this.webSocket.send(JSON.stringify({"type":"ping"}))
+            },9000);
+        };
         this.webSocket.onmessage = (e)=>{
             let data = JSON.parse(e.data);
             let userData = data.data;
             let type = data.type || "";
             switch (type) {
                 case "bind":
-
-                    break
-                case "ping":
-                    break;
-                case "package":
-                    if(this.state.gameInfo.length === 0){
-                        clearInterval(this.setI3);
-                        this.setI3 = setInterval(()=>{
-                            let data = JSON.stringify({"type":"ping"});
-                            this.webSocket.send(data)
-                        },9000)
-                    }
-                    if(userData.type === 3){
-                        this.getMyGold()
-                    }
-                    // alert(userData.type);
-                    if($(".open-box").is(":animated")){
-                        this.setT1 = setTimeout(()=>{
-                            let data = this.state.gameInfo;
-                            data.push(userData);
-                            this.setState({
-                                gameInfo:data
-                            });
-                            clearTimeout(this.setT1)
-                        },2200)
-                    }else {
-                        let data = this.state.gameInfo;
-                        data.push(userData);
-                        this.setState({
-                            gameInfo:data
-                        });
-                    }
-                    // let roomInfo = localStorage.getItem("room_info")?localStorage.getItem("room_info"):"";
-                    // let arr = roomInfo.split(";");
-                    // if(arr[arr.length-1].type === userData.type&&arr[arr.length-1].username === userData.username){
-                    //
-                    // }else{
-                    //     if(roomInfo.length === 0){
-                    //         roomInfo = roomInfo.concat(JSON.stringify(userData))
-                    //     }else {
-                    //         roomInfo = roomInfo.concat(";" + JSON.stringify(userData))
-                    //     }
-                    // }
-                    // localStorage.setItem("room_info",roomInfo);
-                    if(data.username === this.props.userInfo.data.username){
-                        this.getMyGold();
-                    }
-                    break;
+                    break;case "ping":break;case "package":
+                if(userData.type === 3){
+                    this.getMyGold()
+                }
+                let data = this.state.gameInfo;
+                data.push(userData);
+                this.setState({
+                    gameInfo:data
+                });
+                if(data.username === this.props.userInfo.data.username){
+                    this.getMyGold();
+                }
+                break;
                 default:
                     break;
             }
         }
-    };
+    }
 
     componentWillUnmount(){
         this.webSocket.close();
         clearInterval(this.setI3);
         clearTimeout(this.setTs);
         clearTimeout(this.setT);
+        clearTimeout(this.setMusic);
     }
 
     getMyGold(){
@@ -219,7 +140,6 @@ class TreasureBoxRoom extends React.Component{
                     height: "44vw"
                 },0);
                 clearTimeout(this.setTs);
-                message.info(res.msg)
                 this.getMyGold()
             },1000);
             clearTimeout(this.setT)
@@ -242,6 +162,37 @@ class TreasureBoxRoom extends React.Component{
         })
     }
 
+    getMySetting = () => {
+        Api.setInfo().then(res => {
+            this.setState({
+                mySetting:res.data
+            })
+        })
+    };
+
+    musicChange(){
+        let time = this.state.musicRed === "red"?118000:105000;
+        clearTimeout(this.setMusic);
+        this.setMusic = setTimeout(()=>{
+            if(time === 118000){
+                this.setState({
+                    musicRed:"red1"
+                })
+            }else {
+                this.setState({
+                    musicRed:"red"
+                })
+            }
+            this.musicChange();
+        },time)
+    }
+
+    openSetting(){
+        this.setState({
+            openSetting:true
+        })
+    }
+
     render(){
         const userInfo = this.props.userInfo.data;
         const gold = this.state.myGold;
@@ -249,11 +200,16 @@ class TreasureBoxRoom extends React.Component{
         // for(let i=0;i<this.state.gameInfo.length;i++){
         //     alert(this.state.gameInfo[i].type)
         // }
+        this.musicChange();
         return(
             <div className="treasure-box-room-wrap">
                 <div className="treasure-box-header">
+                    {
+                        this.state.mySetting.music?<audio className="audio-treasure" src={require("../../layouts/video/"+this.state.musicRed+".mp3")} autoPlay={this.state.isMedia} loop={false}>
+                        </audio>:null
+                    }
                     <span className="header-top"></span>
-                    <img src={userInfo?userInfo.avatar:require("../../layouts/image/head.png")} alt=""/>
+                    <img onClick={()=>this.openSetting()} src={userInfo?userInfo.avatar:require("../../layouts/image/head.png")} alt=""/>
                     <div className="my-info">
                         <span>{userInfo?userInfo.username:"请先登录"}</span>
                         <span className="my-vip"><img src={userInfo?userInfo.vip === 0?require("../../layouts/image/vip/no.png"):
@@ -267,7 +223,7 @@ class TreasureBoxRoom extends React.Component{
                         <span className="my-money-item-pay" onClick={()=>{{if(this.props.userInfo&&this.props.userInfo.code === "0000"){
                             window.location.href = "#/Dashboard/Shopping/1"
                         }else {
-                            message.info("请先登录")
+                            message.info("请先登录");
                             this.setState({
                                 isLogin:true
                             })
@@ -343,6 +299,19 @@ class TreasureBoxRoom extends React.Component{
                     })}}>继续围观</Button>
                     <Button onClick={()=>{window.location.href = "#/Dashboard/Shopping/1"}}>立即充值</Button>
                 </Modal>
+                {
+                    this.props.userInfo.code === "0000"&&this.state.openSetting?<TreasureInfoModal info={this.props.userInfo.data}
+                                                                                                   isOpenModel={this.state.openSetting}
+                                                                                                   mySetting={this.state.mySetting}
+                                                                                                   getUserInfo={()=>{
+                                                                                                       this.getMySetting();
+                                                                                                       this.getUserInfo();
+                                                                                                       this.setState({
+                                                                                                           openSetting:false
+                                                                                                       })
+                                                                                                   }}
+                    />:null
+                }
             </div>
         )
     }
