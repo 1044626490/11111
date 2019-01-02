@@ -78,7 +78,7 @@ class GameHome extends React.Component{
         }
     }
 
-    componentWillMount(){
+    componentDidMount(){
         let homeId = this.props.match.params.homeId;
         let userType = this.props.match.params.status;
         let level = homeId === "1"?"初级":homeId === "2"?"中级":"高级";

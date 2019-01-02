@@ -79,6 +79,7 @@ export default {
     userGold: (params) =>post(C.USER_GOLD, params),
     packageRecord: (params) =>post(C.PACKAGE_RECORD, params),
     todayGrabbedRecord: (params) =>post(C.TODAY_GRABBED_RECORD, params),
+    wechatQrpay: (params) =>post(C.WECHAT_QRPAY, params),
 
     // logout: (params) => post(C.LOGOUT, params),
     // register: (params) => post(C.REGISTER, params),

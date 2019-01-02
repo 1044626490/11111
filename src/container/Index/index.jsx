@@ -122,7 +122,8 @@ class Index extends React.Component {
             isTalking:false,
             isHasTask:false,
             isFirst:false,
-            splash:this.props.userInfo.code
+            splash:this.props.userInfo.code,
+            openMore:false
         };
     }
 
@@ -527,6 +528,28 @@ class Index extends React.Component {
                     </div>
                 </div>
                 <div className="buttom-index">
+                    {
+                        this.state.openMore?<div className="more">
+                            <span onClick={()=>{
+                            if(this.props.userInfo&&this.props.userInfo.code === "0000"){
+                                this.setState({
+                                    isOpenInfoModel:true
+                                })
+                            }else {
+                                message.info("请先登录")
+                                this.setState({
+                                    isLogin:true
+                                })
+                            }}}>
+                                <img src={require("../../layouts/image/index1/treasure/setting.png")} alt=""/>
+                                <span>设置</span>
+                            </span>
+                            <span onClick={()=>{window.location.href = "https://fir.im/7xy6"}}>
+                                <img src={require("../../layouts/image/index1/treasure/download.png")} alt=""/>
+                                <span>下载</span>
+                            </span>
+                        </div>:null
+                    }
                     <img className="buttom-index-img" src={require("../../layouts/image/index1/bottom2.png")} alt=""/>
                     <div
                         onTouchStart={()=>{$(".buttom-index-img").prop("src",require("../../layouts/image/index1/bottom1.png"))}}
@@ -538,16 +561,7 @@ class Index extends React.Component {
                         商城
                     </div>
                     <Button className="menu" onClick={()=>{window.location.href = "#/Dashboard/index"}}>大厅</Button>
-                    <Button className="setting" onClick={()=>{if(this.props.userInfo&&this.props.userInfo.code === "0000"){
-                        this.setState({
-                            isOpenInfoModel:true
-                        })
-                    }else {
-                        message.info("请先登录")
-                        this.setState({
-                            isLogin:true
-                        })
-                    }}}>设置</Button>
+                    <Button className="setting" onClick={()=>{this.setState({openMore:!this.state.openMore})}}>更多</Button>
                 </div>
                 {
                     this.state.isWxBindPhone?

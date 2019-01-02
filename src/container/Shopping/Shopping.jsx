@@ -61,7 +61,9 @@ class Shopping extends React.Component{
             type:null,
             price:null,
             vip:this.props.userInfo.data.vip,
-            time:null
+            time:null,
+            isCharge:false,
+            twoPic:null
         }
     }
 
@@ -193,6 +195,15 @@ class Shopping extends React.Component{
         return(
             <div className="shopping-mall-wrap">
                 <HeaderNav name="商城"/>
+                <div onClick={()=>{this.setState({
+                    isCharge:false,
+                    twoPic:null
+                })}} className={this.state.isCharge?"two-pic":"two-pic-none"}>
+                    <div>
+                        <img src={this.state.twoPic||""} alt=""/>
+                        <p>支付二维码2分钟内有效</p>
+                    </div>
+                </div>
                 <Tabs activeKey={this.state.defaultActiveKey} onChange={(value)=>{this.setState({defaultActiveKey:value})}}>
                     <TabPane tab={<p className="recharge-value">账户充值<p className="font-num">账户充值</p></p>} key="1">
                         <div className="shopping-wrap">
@@ -200,7 +211,15 @@ class Shopping extends React.Component{
                                 {
                                     data.map((item, index) => {
                                         return <li key={index} className="shopping-item">
-                                            <div onClick={item.callback.bind(this,item)}>
+                                            <div onClick={
+                                                ()=>{Api.wechatQrpay({price:item.price}).then(res => {
+                                                    this.setState({twoPic:res.data,isCharge:true})
+                                                }).catch(err=> {
+                                                    message.warning(err.info)
+                                                })
+                                                }
+                                            }
+                                            >
                                                 <img src={item.img} alt=""/>
                                             </div>
                                         </li>

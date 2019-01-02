@@ -36,7 +36,7 @@ class Header extends React.Component{
                     <span>ID:{userInfo?userInfo.uid:0}</span>
                 </div>
                 <div className="my-money-item">
-                    <span>{userInfo?Number(gold) >= 10000?(Number(gold)/10000).toFixed(1)+"w":gold:0}</span>
+                    <span>{userInfo?Number(gold):0}</span>
                     <span className="my-money-item-pay" onClick={()=>{{if(this.props.userInfo&&this.props.userInfo.code === "0000"){
                         window.location.href = "#/Dashboard/Shopping/1"
                     }else {

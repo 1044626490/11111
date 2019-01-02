@@ -25,7 +25,7 @@ class TenSen extends React.Component {
         this.state = {
             isOenModal:false,
             intoHomePwd:["","","","","",""],
-            userInfo:false,
+            userInfo:this.props.userInfo.data||false,
             isHomeNeedPwd:false,
             homeId:"",
             isResetMyInfo:false,
@@ -47,12 +47,15 @@ class TenSen extends React.Component {
         };
     }
 
-    componentDidMount(){
+    componentWillMount(){
         if(window.location.hash.indexOf("#/Dashboard/TenSen") >= 0){
             if(this.props.userInfo.code !== "20009"){
                 this.getUserInfo();
             }
         }
+    }
+
+    componentDidMount(){
         let systemMessage = $(".system-message");
         let talkContainer = $(".talk-container");
         let inviteFriend = $(".invite-friend");

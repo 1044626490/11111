@@ -25,7 +25,8 @@ class TreasureBoxRoom extends React.Component{
             myGold:0,
             noMoney:false,
             mySetting:{},
-            openSetting:false
+            openSetting:false,
+            openBoxSound:false
         }
     }
 
@@ -47,7 +48,6 @@ class TreasureBoxRoom extends React.Component{
 
     getUserInfo = () =>{
         this.props.dispatch(fetchPostsGetUser()).then((res) => {
-
         }).catch((err) => {
             message.error(err.msg)
         })
@@ -55,6 +55,7 @@ class TreasureBoxRoom extends React.Component{
 
     getRoom(){
         this.getMyGold();
+        this.putGold();
         let gold = this.props.match.params.gold;
         let level = gold === "100"?1:gold === "500"? 2:gold === "1000"?3:gold === "5000"?4:gold === "10000"?5:1;
         this.webSocket.onopen = () => {
@@ -104,6 +105,18 @@ class TreasureBoxRoom extends React.Component{
         })
     }
 
+    putGold(){
+        for(let i=1;i<17;i++){
+            let math = Math.random().toFixed(2);
+            let a = Number(Math.random() > 0.5? math*(-1):math);
+            let b = Number(Math.random() > 0.5? math*(-1):math);
+            $(".today-signs"+i).css({
+                left: (49+a)+"%",
+                top: (49+b)+"%"
+            })
+        }
+    }
+
     openBoxAnimate(res){
         if(res.code === 50003){
             $(".open-box-imgs").prop("src",require("../../layouts/image/index1/treasure/none.png"))
@@ -129,6 +142,42 @@ class TreasureBoxRoom extends React.Component{
                 width: "100%",
                 height: "100%"
             },500);
+            if(res.code === "0000"){
+                let count = 0;
+                this.setState({
+                    openBoxSound:true
+                });
+                let setI = setInterval(()=>{
+                    count++;
+                    let name = '.today-signs'+count;
+                    const winHeight = $('.my-money-item-pay').offset().top - $(document).scrollTop();
+                    const winWidth = $('.my-money-item-pay').offset().left - $(document).scrollLeft();
+                    $(name).css({
+                        display: "inline-block",
+                    }).animate({
+                        left:winWidth,
+                        top: winHeight,
+                    },600);
+                    let setT = setTimeout(()=>{
+                        $(name).css({
+                            display: "none",
+                            left: "49%",
+                            top: "49%",
+                        });
+                        this.putGold();
+                        clearTimeout(setT)
+                    },700);
+                    if(count === 17){
+                        let setT = setTimeout(()=>{
+                            this.setState({
+                                openBoxSound:false
+                            });
+                            clearTimeout(setT)
+                        },700);
+                        clearInterval(setI)
+                    }
+                },50);
+            }
             this.setTs = setTimeout(()=>{
                 $(".box-mask").css({
                     display: "none"
@@ -166,7 +215,8 @@ class TreasureBoxRoom extends React.Component{
         Api.setInfo().then(res => {
             this.setState({
                 mySetting:res.data
-            })
+            });
+            this.musicChange();
         })
     };
 
@@ -200,12 +250,32 @@ class TreasureBoxRoom extends React.Component{
         // for(let i=0;i<this.state.gameInfo.length;i++){
         //     alert(this.state.gameInfo[i].type)
         // }
-        this.musicChange();
         return(
             <div className="treasure-box-room-wrap">
+                <span className="today-signs1"></span>
+                <span className="today-signs2"></span>
+                <span className="today-signs3"></span>
+                <span className="today-signs4"></span>
+                <span className="today-signs5"></span>
+                <span className="today-signs6"></span>
+                <span className="today-signs7"></span>
+                <span className="today-signs8"></span>
+                <span className="today-signs9"></span>
+                <span className="today-signs10"></span>
+                <span className="today-signs11"></span>
+                <span className="today-signs13"></span>
+                <span className="today-signs12"></span>
+                <span className="today-signs14"></span>
+                <span className="today-signs15"></span>
+                <span className="today-signs17"></span>
+                <span className="today-signs16"></span>
                 <div className="treasure-box-header">
                     {
-                        this.state.mySetting.music?<audio className="audio-treasure" src={require("../../layouts/video/"+this.state.musicRed+".mp3")} autoPlay={this.state.isMedia} loop={false}>
+                        this.state.mySetting.music?<audio className="audio-treasure" src={require("../../layouts/video/"+this.state.musicRed+".mp3")} autoPlay={true} loop={true}>
+                        </audio>:null
+                    }
+                    {
+                        this.state.mySetting.sound_effect&&this.state.openBoxSound?<audio className="audio-sound_effect" src={require("../../layouts/video/red2.mp3")} autoPlay={true} loop={true}>
                         </audio>:null
                     }
                     <span className="header-top"></span>

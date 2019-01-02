@@ -2,6 +2,41 @@
   width: 100vw;
   height: 100vh;
   background-image: url("../../layouts/image/bg.jpg");
+  .two-pic-none{
+    display: none;
+  }
+  .two-pic{
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 9999;
+    background-color: rgba(0,0,0,.5);
+    >div{
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%,-50%);
+      width: 50vw;
+      height: 50vw;
+      background-color: white;
+      padding: 1.5vw;
+      img{
+        width: 47vw;
+        height: 47vw;
+      }
+      p{
+        position: absolute;
+        bottom: -15vw;
+        left: 0;
+        width: 50vw;
+        text-align: center;
+        color: white;
+        font-size: 4vw;
+      }
+    }
+  }
   .ant-radio-inner:after{
     border-radius: 1.2vw;
     width: 2.5vw!important;

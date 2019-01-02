@@ -79,7 +79,7 @@ const checkRespStatus = (respPromise) => {
             // } else {
                 respPromise.json().then((res) => {
                     if (res.code === "0000" || res.status === "1") {
-                        if(res.data===null){
+                        if(!res.data){
                             res.data=[]
                         }
                         resolve(res);
